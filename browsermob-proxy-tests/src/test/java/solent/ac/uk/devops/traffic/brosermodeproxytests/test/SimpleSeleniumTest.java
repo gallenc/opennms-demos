@@ -76,12 +76,14 @@ public class SimpleSeleniumTest {
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
 
             // create a new HAR with the label "uk.yahoo.com"
-            proxy.newHar("www.bbc.co.uk");
+            //proxy.newHar("www.bbc.co.uk");
+            proxy.newHar("asuse");
 
             System.out.println("***************** driver configured - getting site: ");
 
             // open yahoo.com
-            driver.get("https://www.bbc.co.uk/");
+            driver.get("http://192.168.1.1/");
+            //driver.get("https://www.bbc.co.uk/");
 
             System.out.println("***************** driver get complete - writing har ");
 

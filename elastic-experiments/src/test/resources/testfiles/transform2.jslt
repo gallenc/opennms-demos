@@ -1,0 +1,5 @@
+// comment - injects poll metadata
+{
+  "pollMetadata" : $pollMetadata,
+  * : .
+}

@@ -1,0 +1,4 @@
+// comment - this lets everything through
+{
+  * : .
+}

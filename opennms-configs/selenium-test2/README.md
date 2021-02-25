@@ -16,6 +16,9 @@ selenium replace existing selenium with
  selenium-support-3.141.59.jar
 
 you need to replace guava-18 with guava-21.0.jar
+https://github.com/google/guava/wiki/Release21
+
+
 
 for junit4
 hamcrest-all-1.3.jar

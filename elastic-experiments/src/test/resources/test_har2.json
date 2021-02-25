@@ -1,0 +1,1190 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "BrowserMob Proxy",
+			"version": "2.1.5",
+			"comment": ""
+		},
+		"pages": [
+			{
+				"id": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:18.839Z",
+				"title": "www.bbc.co.uk",
+				"pageTimings": {
+					"onLoad": 2599,
+					"comment": ""
+				},
+				"comment": ""
+			}
+		],
+		"entries": [
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:19.023Z",
+				"request": {
+					"method": "GET",
+					"url": "http://192.168.1.1/",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "192.168.1.1"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Upgrade-Insecure-Requests",
+							"value": "1"
+						}
+					],
+					"queryString": [],
+					"headersSize": 352,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:19 GMT"
+						},
+						{
+							"name": "Content-Type",
+							"value": "text/html"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 81,
+						"mimeType": "text/html",
+						"text": "<HTML><HEAD><script>top.location.href='/Main_Login.asp';</script>\n</HEAD></HTML>\n",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 183,
+					"bodySize": 81,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 0,
+					"blocked": 0,
+					"dns": 0,
+					"receive": 33,
+					"connect": 72,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 107
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:19.634Z",
+				"request": {
+					"method": "GET",
+					"url": "http://192.168.1.1/Main_Login.asp",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "192.168.1.1"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://192.168.1.1/"
+						},
+						{
+							"name": "Upgrade-Insecure-Requests",
+							"value": "1"
+						}
+					],
+					"queryString": [],
+					"headersSize": 396,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:20 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"name": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"name": "Expires",
+							"value": "0"
+						},
+						{
+							"name": "Content-Type",
+							"value": "text/html"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 11909,
+						"mimeType": "text/html",
+						"text": "﻿<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<html xmlns:v>\n<head>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n<meta HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">\n<meta HTTP-EQUIV=\"Expires\" CONTENT=\"-1\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\">\n<link rel=\"icon\" href=\"images/favicon.png\">\n<title>ASUS Login</title>\n<style>\nbody{\nfont-family: Arial, MS UI Gothic, MS P Gothic, sans-serif;\n}\n.wrapper{\nbackground:url(images/New_ui/login_bg.png) #283437 no-repeat;\nbackground-size: 1280px 1076px;\nbackground-position: center 0%;\nmargin: 0px;\nbackground:#283437\\9;\n}\n.title_name {\nfont-size: 40pt;\ncolor:#93d2d9;\n}\n.prod_madelName{\nfont-size: 26pt;\ncolor:#fff;\nmargin-left:78px;\nmargin-top: 10px;\n}\n.login_img{\nwidth:43px;\nheight:43px;\nbackground-image: url('images/New_ui/icon_titleName.png');\nbackground-repeat: no-repeat;\n}\n.p1{\nfont-size: 16pt;\ncolor:#fff;\nwidth:480px;\n}\n.button{\nbackground-color:#279FD9;\nborder-radius: 4px ;\ntransition: visibility 0s linear 0.218s,opacity 0.218s,background-color 0.218s;\nheight: 68px;\nwidth: 300px;\nfont-size: 28pt;\ncolor:#fff;\ntext-align: center;\nfloat:right;\nmargin:50px 0px 0px 78px;\nline-height:68px;\ncursor:pointer;\n}\n.form_input{\nbackground-color:rgba(255,255,255,0.2);\nbackground-color:#576D73\\9;\nborder-radius: 4px;\npadding:23px 22px;\nwidth: 480px;\nborder: 0;\nheight:30px;\ncolor:#fff;\nfont-size:28px;\n}\n.nologin{\nmargin:10px 0px 0px 78px;\nbackground-color:rgba(255,255,255,0.2);\npadding:20px;\nline-height:36px;\nborder-radius: 5px;\nwidth: 480px;\nborder: 0;\ncolor:#FFF;\ncolor:#FFF\\9; /* IE6 IE7 IE8 */\nfont-size:28px;\n}\n.div_table{\ndisplay:table;\n}\n.div_tr{\ndisplay:table-row;\n}\n.div_td{\ndisplay:table-cell;\n}\n.title_gap{\nmargin:20px 0px 0px 78px;\n}\n.img_gap{\npadding-right:30px;\nvertical-align:middle;\n}\n.password_gap{\nmargin:30px 0px 0px 78px;\n}\n.error_hint{\ncolor: rgb(255, 204, 0);\nmargin:10px 0px -10px 78px;\nfont-size: 18px;\n}\n.error_hint1{\nmargin:40px 0px -10px 78px;\nfont-size: 24px;\nline-height:32px;\nwidth: 580px;\n}\n.main_field_gap{\nmargin:100px auto 0;\n}\n.warming_desc{\nfont-size: 16px;\ncolor:#FC0;\nwidth: 600px;\n}\n/*for mobile device*/\n@media screen and (max-width: 1000px){\n.title_name {\nfont-size: 20pt;\ncolor:#93d2d9;\nmargin-left:15px;\n}\n.prod_madelName{\nfont-size: 13pt;\nmargin-left: 15px;\n}\n.p1{\nfont-size: 12pt;\nwidth:100%;\n}\n.login_img{\nbackground-size: 75%;\n}\n.form_input{\npadding:10px 11px;\nwidth: 100%;\nheight:30px;\nfont-size:16px\n}\n.button{\nheight: 50px;\nwidth: 100%;\nfont-size: 14pt;\ntext-align: center;\nfloat:right;\nmargin: 25px -22px 40px 15px;\nline-height:50px;\npadding-left: 7px;\n}\n.nologin{\nmargin-left:10px;\npadding:10px;\nline-height:18px;\nwidth: 100%;\nfont-size:14px;\n}\n.error_hint{\nmargin-left:10px;\n}\n.error_hint1{\nwidth: 100%;\nfont-size:14px;\n}\n.main_field_gap{\nwidth:80%;\nmargin:30px 0 0 15px;\n/*margin:30px auto 0;*/\n}\n.title_gap{\nmargin-left:15px;\n}\n.password_gap{\nmargin-left:15px;\n}\n.img_gap{\npadding-right:0;\nvertical-align:middle;\n}\n.warming_desc{\nmargin: 10px 15px;\nwidth: 100%;\n}\n}\n</style>\n<script>\n/* add Array.prototype.forEach() in IE8 */\nif(typeof Array.prototype.forEach != 'function'){\nArray.prototype.forEach = function(callback){\nfor(var i = 0; i < this.length; i++){\ncallback.apply(this, [this[i], i, this]);\n}\n};\n}\nfunction tryParseJSON (jsonString){\ntry {\nvar o = JSON.parse(jsonString);\nif (o && typeof o === \"object\") {\nreturn o;\n}\n}\ncatch (e) { }\nreturn false;\n};\nvar login_info = tryParseJSON('{ \"lock_time\": -949994, \"error_status\": 1, \"page\": \"index.asp\" }');\nvar isIE8 = navigator.userAgent.search(\"MSIE 8\") > -1;\nvar isIE9 = navigator.userAgent.search(\"MSIE 9\") > -1;\nvar remaining_time = login_info.lock_time;\nvar remaining_time_min;\nvar remaining_time_sec;\nvar remaining_time_show;\nvar countdownid, rtime_obj;\nvar redirect_page = login_info.page;\nvar isRouterMode = ('1' == '1') ? true : false;\nvar header_info = [{ \"host\": \"192.168.1.1\", \"current_page\": \"Main_Login.asp\", \"protocol\": \"http\", \"port\": 80 }][0];\nvar ROUTERHOSTNAME = 'router.asus.com';\nvar domainNameUrl = header_info.protocol+\"://\"+ROUTERHOSTNAME+\":\"+header_info.port;\nvar chdom = function(){window.location.href=domainNameUrl};\n(function(){\nif(ROUTERHOSTNAME !== header_info.host && ROUTERHOSTNAME != \"\" && isRouterMode){\nsetTimeout(function(){\nvar s=document.createElement(\"script\");s.type=\"text/javascript\";s.src=domainNameUrl+\"/chdom.json?hostname=\"+header_info.host;var h=document.getElementsByTagName(\"script\")[0];h.parentNode.insertBefore(s,h);\n}, 1);\n}\n})();\nfunction initial(){\nvar flag = login_info.error_status;\nif(isIE8 || isIE9){\ndocument.getElementById(\"name_title_ie\").style.display =\"\";\ndocument.getElementById(\"password_title_ie\").style.display =\"\";\n}\nif(flag != \"\"){\ndocument.getElementById(\"error_status_field\").style.display =\"\";\nif(flag == 3){\ndocument.getElementById(\"error_status_field\").innerHTML =\"* Invalid username or password\";\n}\nelse if(flag == 7){\ndocument.getElementById(\"error_status_field\").innerHTML =\"You have entered an incorrect username or password 5 times. Please try again after \"+\"<span id='rtime'></span>\"+\" seconds.\";\ndocument.getElementById(\"error_status_field\").className = \"error_hint error_hint1\";\ndisable_input(1);\ndisable_button(1);\nrtime_obj=document.getElementById(\"rtime\");\ncountdownfunc();\ncountdownid = window.setInterval(countdownfunc,1000);\n}\nelse if(flag == 8){\ndocument.getElementById(\"login_filed\").style.display =\"none\";\ndocument.getElementById(\"logout_field\").style.display =\"\";\n}\nelse if(flag == 9){\ndocument.getElementById(\"login_filed\").style.display =\"none\";\ndocument.getElementById(\"nologin_field\").style.display =\"\";\n}\nelse{\ndocument.getElementById(\"error_status_field\").style.display =\"none\";\n}\n}\ndocument.form.login_username.focus();\n/*register keyboard event*/\ndocument.form.login_username.onkeyup = function(e){\ne=e||event;\nif(e.keyCode == 13){\ndocument.form.login_passwd.focus();\nreturn false;\n}\n};\ndocument.form.login_username.onkeypress = function(e){\ne=e||event;\nif(e.keyCode == 13){\nreturn false; }\n};\ndocument.form.login_passwd.onkeyup = function(e){\ne=e||event;\nif(e.keyCode == 13){\nlogin();\nreturn false;\n}\n};\ndocument.form.login_passwd.onkeypress = function(e){\ne=e||event;\nif(e.keyCode == 13){\nreturn false;\n}\n};\nif(history.pushState != undefined) history.pushState(\"\", document.title, window.location.pathname);\n}\nfunction countdownfunc(){\nremaining_time_min = checkTime(Math.floor(remaining_time/60));\nremaining_time_sec = checkTime(Math.floor(remaining_time%60));\nremaining_time_show = remaining_time_min +\":\"+ remaining_time_sec;\nrtime_obj.innerHTML = remaining_time_show;\nif (remaining_time==0){\nclearInterval(countdownid);\nsetTimeout(\"top.location.href='/Main_Login.asp';\", 2000);\n}\nremaining_time--;\n}\nfunction login(){\nvar trim = function(val){\nval = val+'';\nfor (var startIndex=0;startIndex<val.length && val.substring(startIndex,startIndex+1) == ' ';startIndex++);\nfor (var endIndex=val.length-1; endIndex>startIndex && val.substring(endIndex,endIndex+1) == ' ';endIndex--);\nreturn val.substring(startIndex,endIndex+1);\n}\nif(!window.btoa){\nwindow.btoa = function(input){\nvar keyStr = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=\";\nvar output = \"\";\nvar chr1, chr2, chr3, enc1, enc2, enc3, enc4;\nvar i = 0;\nvar utf8_encode = function(string) {\nstring = string.replace(/\\r\\n/g,\"\\n\");\nvar utftext = \"\";\nfor (var n = 0; n < string.length; n++) {\nvar c = string.charCodeAt(n);\nif (c < 128) {\nutftext += String.fromCharCode(c);\n}\nelse if((c > 127) && (c < 2048)) {\nutftext += String.fromCharCode((c >> 6) | 192);\nutftext += String.fromCharCode((c & 63) | 128);\n}\nelse {\nutftext += String.fromCharCode((c >> 12) | 224);\nutftext += String.fromCharCode(((c >> 6) & 63) | 128);\nutftext += String.fromCharCode((c & 63) | 128);\n}\n}\nreturn utftext;\n};\ninput = utf8_encode(input);\nwhile (i < input.length) {\nchr1 = input.charCodeAt(i++);\nchr2 = input.charCodeAt(i++);\nchr3 = input.charCodeAt(i++);\nenc1 = chr1 >> 2;\nenc2 = ((chr1 & 3) << 4) | (chr2 >> 4);\nenc3 = ((chr2 & 15) << 2) | (chr3 >> 6);\nenc4 = chr3 & 63;\nif (isNaN(chr2)) {\nenc3 = enc4 = 64;\n}\nelse if (isNaN(chr3)) {\nenc4 = 64;\n}\noutput = output +\nkeyStr.charAt(enc1) + keyStr.charAt(enc2) +\nkeyStr.charAt(enc3) + keyStr.charAt(enc4);\n}\nreturn output;\n};\n}\ndocument.form.login_username.value = trim(document.form.login_username.value);\ndocument.form.login_authorization.value = btoa(document.form.login_username.value + ':' + document.form.login_passwd.value);\ndocument.form.login_username.disabled = true;\ndocument.form.login_passwd.disabled = true;\ntry{\nif(redirect_page == \"\"\n|| redirect_page == \"Logout.asp\"\n|| redirect_page == \"Main_Login.asp\"\n|| redirect_page.indexOf(\" \") != -1\n|| redirect_page.indexOf(\"//\") != -1\n|| redirect_page.indexOf(\"http\") != -1\n|| (redirect_page.indexOf(\".asp\") == -1 && redirect_page.indexOf(\".htm\") == -1 && redirect_page != \"send_IFTTTPincode.cgi\" && redirect_page != \"cfg_onboarding.cgi\")\n){\ndocument.form.next_page.value = \"\";\n}\nelse{\ndocument.form.next_page.value = redirect_page;\n}\n}\ncatch(e){\ndocument.form.next_page.value = \"\";\n}\ndocument.form.submit();\n}\nfunction disable_input(val){\nvar disable_input_x = document.getElementsByClassName('form_input');\nfor(i=0;i<disable_input_x.length;i++){\nif(val == 0)\ndisable_input_x[i].disabled = true;\nelse\ndisable_input_x[i].style.display = \"none\";\n}\n}\nfunction disable_button(val){\nif(val == 0)\ndocument.getElementsByClassName('button')[0].disabled = true;\nelse\ndocument.getElementsByClassName('button')[0].style.display = \"none\";\n}\nfunction checkTime(i){\nif (i<10){\ni=\"0\" + i\n}\nreturn i\n}\n</script>\n</head>\n<body class=\"wrapper\" onload=\"initial();\">\n<iframe name=\"hidden_frame\" id=\"hidden_frame\" width=\"0\" height=\"0\" frameborder=\"0\"></iframe>\n<iframe id=\"dmRedirection\" width=\"0\" height=\"0\" frameborder=\"0\" scrolling=\"no\" src=\"\"></iframe>\n<form method=\"post\" name=\"form\" action=\"login.cgi\" target=\"\">\n<input type=\"hidden\" name=\"group_id\" value=\"\">\n<input type=\"hidden\" name=\"action_mode\" value=\"\">\n<input type=\"hidden\" name=\"action_script\" value=\"\">\n<input type=\"hidden\" name=\"action_wait\" value=\"5\">\n<input type=\"hidden\" name=\"current_page\" value=\"Main_Login.asp\">\n<input type=\"hidden\" name=\"next_page\" value=\"Main_Login.asp\">\n<input type=\"hidden\" name=\"login_authorization\" value=\"\">\n<div class=\"div_table main_field_gap\">\n<div class=\"div_tr\">\n<div class=\"title_name\">\n<div class=\"div_td img_gap\">\n<div class=\"login_img\"></div>\n</div>\n<div class=\"div_td\">Sign In</div>\n</div>\n<div class=\"prod_madelName\">DSL-AC68U</div>\n<div id=\"login_filed\">\n<div class=\"p1 title_gap\">Sign in with your ASUS router account</div>\n<div id=\"name_title_ie\" style=\"display:none;margin:20px 0 -10px 78px;\" class=\"p1 title_gap\">Username</div>\n<div class=\"title_gap\">\n<input type=\"text\" id=\"login_username\" name=\"login_username\" tabindex=\"1\" class=\"form_input\" maxlength=\"20\" autocapitalize=\"off\" autocomplete=\"off\" placeholder=\"Username\">\n</div>\n<div id=\"password_title_ie\" style=\"display:none;margin:20px 0 -20px 78px;\" class=\"p1 title_gap\">Password</div>\n<div class=\"password_gap\">\n<input type=\"password\" name=\"login_passwd\" tabindex=\"2\" class=\"form_input\" maxlength=\"16\" placeholder=\"Password\" autocapitalize=\"off\" autocomplete=\"off\">\n</div>\n<div class=\"error_hint\" style=\"display:none;\" id=\"error_status_field\"></div>\n<div class=\"button\" onclick=\"login();\">Sign In</div>\n</div>\n<div id=\"nologin_field\" style=\"display:none;\">\n<div class=\"p1 title_gap\"></div>\n<div class=\"nologin\">\nYou cannot login unless logout another user first.\n<div id=\"logined_ip_str\"></div>\n</div>\n</div>\n<div id=\"logout_field\" style=\"display:none;\">\n<div class=\"p1 title_gap\"></div>\n<div class=\"nologin\">You have logged out successfully.</div>\n</div>\n</div>\n</div>\n</form>\n</body>\n</html>\n\n",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 265,
+					"bodySize": 11909,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 70,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 77,
+					"connect": 15,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 163
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:19.758Z",
+				"request": {
+					"method": "GET",
+					"url": "http://192.168.1.1/images/New_ui/login_bg.png",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "192.168.1.1"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "image/webp,*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://192.168.1.1/Main_Login.asp"
+						}
+					],
+					"queryString": [],
+					"headersSize": 332,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:20 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "max-age=300"
+						},
+						{
+							"name": "Content-Type",
+							"value": "image/png"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 40079,
+						"mimeType": "image/png",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 211,
+					"bodySize": 40079,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 3,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 319,
+					"connect": 47,
+					"wait": 2
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 373
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:19.818Z",
+				"request": {
+					"method": "GET",
+					"url": "http://192.168.1.1/images/New_ui/icon_titleName.png",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "192.168.1.1"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "image/webp,*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://192.168.1.1/Main_Login.asp"
+						}
+					],
+					"queryString": [],
+					"headersSize": 338,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:20 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "max-age=300"
+						},
+						{
+							"name": "Content-Type",
+							"value": "image/png"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 825,
+						"mimeType": "image/png",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 211,
+					"bodySize": 825,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 109,
+					"blocked": 0,
+					"dns": 5,
+					"receive": 106,
+					"connect": 215,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 436
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:20.290Z",
+				"request": {
+					"method": "GET",
+					"url": "http://router.asus.com/chdom.json?hostname=192.168.1.1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "router.asus.com"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://192.168.1.1/Main_Login.asp"
+						}
+					],
+					"queryString": [
+						{
+							"name": "hostname",
+							"value": "192.168.1.1"
+						}
+					],
+					"headersSize": 334,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:21 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"name": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"name": "Expires",
+							"value": "0"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 12,
+						"mimeType": "application/json",
+						"text": "﻿chdom()\n\n",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 272,
+					"bodySize": 12,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 42,
+					"blocked": 0,
+					"dns": 109,
+					"receive": 43,
+					"connect": 4,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 199
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:20.387Z",
+				"request": {
+					"method": "GET",
+					"url": "http://192.168.1.1/images/favicon.png",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "192.168.1.1"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "image/webp,*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://192.168.1.1/Main_Login.asp"
+						}
+					],
+					"queryString": [],
+					"headersSize": 324,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 0,
+					"statusText": "",
+					"httpVersion": "unknown",
+					"cookies": [],
+					"headers": [],
+					"content": {
+						"size": 0,
+						"mimeType": "",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1,
+					"comment": "",
+					"_error": "No response received"
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 30,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 0,
+					"connect": 78,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 108
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:20.483Z",
+				"request": {
+					"method": "GET",
+					"url": "http://router.asus.com/",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "router.asus.com"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://192.168.1.1/Main_Login.asp"
+						},
+						{
+							"name": "Upgrade-Insecure-Requests",
+							"value": "1"
+						}
+					],
+					"queryString": [],
+					"headersSize": 404,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:21 GMT"
+						},
+						{
+							"name": "Content-Type",
+							"value": "text/html"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 81,
+						"mimeType": "text/html",
+						"text": "<HTML><HEAD><script>top.location.href='/Main_Login.asp';</script>\n</HEAD></HTML>\n",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 183,
+					"bodySize": 81,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 1,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 86,
+					"connect": 14,
+					"wait": 2
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 105
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:20.603Z",
+				"request": {
+					"method": "GET",
+					"url": "http://router.asus.com/Main_Login.asp",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "router.asus.com"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://router.asus.com/"
+						},
+						{
+							"name": "Upgrade-Insecure-Requests",
+							"value": "1"
+						}
+					],
+					"queryString": [],
+					"headersSize": 408,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:21 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"name": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"name": "Expires",
+							"value": "0"
+						},
+						{
+							"name": "Content-Type",
+							"value": "text/html"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 11913,
+						"mimeType": "text/html",
+						"text": "﻿<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<html xmlns:v>\n<head>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n<meta HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">\n<meta HTTP-EQUIV=\"Expires\" CONTENT=\"-1\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\">\n<link rel=\"icon\" href=\"images/favicon.png\">\n<title>ASUS Login</title>\n<style>\nbody{\nfont-family: Arial, MS UI Gothic, MS P Gothic, sans-serif;\n}\n.wrapper{\nbackground:url(images/New_ui/login_bg.png) #283437 no-repeat;\nbackground-size: 1280px 1076px;\nbackground-position: center 0%;\nmargin: 0px;\nbackground:#283437\\9;\n}\n.title_name {\nfont-size: 40pt;\ncolor:#93d2d9;\n}\n.prod_madelName{\nfont-size: 26pt;\ncolor:#fff;\nmargin-left:78px;\nmargin-top: 10px;\n}\n.login_img{\nwidth:43px;\nheight:43px;\nbackground-image: url('images/New_ui/icon_titleName.png');\nbackground-repeat: no-repeat;\n}\n.p1{\nfont-size: 16pt;\ncolor:#fff;\nwidth:480px;\n}\n.button{\nbackground-color:#279FD9;\nborder-radius: 4px ;\ntransition: visibility 0s linear 0.218s,opacity 0.218s,background-color 0.218s;\nheight: 68px;\nwidth: 300px;\nfont-size: 28pt;\ncolor:#fff;\ntext-align: center;\nfloat:right;\nmargin:50px 0px 0px 78px;\nline-height:68px;\ncursor:pointer;\n}\n.form_input{\nbackground-color:rgba(255,255,255,0.2);\nbackground-color:#576D73\\9;\nborder-radius: 4px;\npadding:23px 22px;\nwidth: 480px;\nborder: 0;\nheight:30px;\ncolor:#fff;\nfont-size:28px;\n}\n.nologin{\nmargin:10px 0px 0px 78px;\nbackground-color:rgba(255,255,255,0.2);\npadding:20px;\nline-height:36px;\nborder-radius: 5px;\nwidth: 480px;\nborder: 0;\ncolor:#FFF;\ncolor:#FFF\\9; /* IE6 IE7 IE8 */\nfont-size:28px;\n}\n.div_table{\ndisplay:table;\n}\n.div_tr{\ndisplay:table-row;\n}\n.div_td{\ndisplay:table-cell;\n}\n.title_gap{\nmargin:20px 0px 0px 78px;\n}\n.img_gap{\npadding-right:30px;\nvertical-align:middle;\n}\n.password_gap{\nmargin:30px 0px 0px 78px;\n}\n.error_hint{\ncolor: rgb(255, 204, 0);\nmargin:10px 0px -10px 78px;\nfont-size: 18px;\n}\n.error_hint1{\nmargin:40px 0px -10px 78px;\nfont-size: 24px;\nline-height:32px;\nwidth: 580px;\n}\n.main_field_gap{\nmargin:100px auto 0;\n}\n.warming_desc{\nfont-size: 16px;\ncolor:#FC0;\nwidth: 600px;\n}\n/*for mobile device*/\n@media screen and (max-width: 1000px){\n.title_name {\nfont-size: 20pt;\ncolor:#93d2d9;\nmargin-left:15px;\n}\n.prod_madelName{\nfont-size: 13pt;\nmargin-left: 15px;\n}\n.p1{\nfont-size: 12pt;\nwidth:100%;\n}\n.login_img{\nbackground-size: 75%;\n}\n.form_input{\npadding:10px 11px;\nwidth: 100%;\nheight:30px;\nfont-size:16px\n}\n.button{\nheight: 50px;\nwidth: 100%;\nfont-size: 14pt;\ntext-align: center;\nfloat:right;\nmargin: 25px -22px 40px 15px;\nline-height:50px;\npadding-left: 7px;\n}\n.nologin{\nmargin-left:10px;\npadding:10px;\nline-height:18px;\nwidth: 100%;\nfont-size:14px;\n}\n.error_hint{\nmargin-left:10px;\n}\n.error_hint1{\nwidth: 100%;\nfont-size:14px;\n}\n.main_field_gap{\nwidth:80%;\nmargin:30px 0 0 15px;\n/*margin:30px auto 0;*/\n}\n.title_gap{\nmargin-left:15px;\n}\n.password_gap{\nmargin-left:15px;\n}\n.img_gap{\npadding-right:0;\nvertical-align:middle;\n}\n.warming_desc{\nmargin: 10px 15px;\nwidth: 100%;\n}\n}\n</style>\n<script>\n/* add Array.prototype.forEach() in IE8 */\nif(typeof Array.prototype.forEach != 'function'){\nArray.prototype.forEach = function(callback){\nfor(var i = 0; i < this.length; i++){\ncallback.apply(this, [this[i], i, this]);\n}\n};\n}\nfunction tryParseJSON (jsonString){\ntry {\nvar o = JSON.parse(jsonString);\nif (o && typeof o === \"object\") {\nreturn o;\n}\n}\ncatch (e) { }\nreturn false;\n};\nvar login_info = tryParseJSON('{ \"lock_time\": -949995, \"error_status\": 1, \"page\": \"index.asp\" }');\nvar isIE8 = navigator.userAgent.search(\"MSIE 8\") > -1;\nvar isIE9 = navigator.userAgent.search(\"MSIE 9\") > -1;\nvar remaining_time = login_info.lock_time;\nvar remaining_time_min;\nvar remaining_time_sec;\nvar remaining_time_show;\nvar countdownid, rtime_obj;\nvar redirect_page = login_info.page;\nvar isRouterMode = ('1' == '1') ? true : false;\nvar header_info = [{ \"host\": \"router.asus.com\", \"current_page\": \"Main_Login.asp\", \"protocol\": \"http\", \"port\": 80 }][0];\nvar ROUTERHOSTNAME = 'router.asus.com';\nvar domainNameUrl = header_info.protocol+\"://\"+ROUTERHOSTNAME+\":\"+header_info.port;\nvar chdom = function(){window.location.href=domainNameUrl};\n(function(){\nif(ROUTERHOSTNAME !== header_info.host && ROUTERHOSTNAME != \"\" && isRouterMode){\nsetTimeout(function(){\nvar s=document.createElement(\"script\");s.type=\"text/javascript\";s.src=domainNameUrl+\"/chdom.json?hostname=\"+header_info.host;var h=document.getElementsByTagName(\"script\")[0];h.parentNode.insertBefore(s,h);\n}, 1);\n}\n})();\nfunction initial(){\nvar flag = login_info.error_status;\nif(isIE8 || isIE9){\ndocument.getElementById(\"name_title_ie\").style.display =\"\";\ndocument.getElementById(\"password_title_ie\").style.display =\"\";\n}\nif(flag != \"\"){\ndocument.getElementById(\"error_status_field\").style.display =\"\";\nif(flag == 3){\ndocument.getElementById(\"error_status_field\").innerHTML =\"* Invalid username or password\";\n}\nelse if(flag == 7){\ndocument.getElementById(\"error_status_field\").innerHTML =\"You have entered an incorrect username or password 5 times. Please try again after \"+\"<span id='rtime'></span>\"+\" seconds.\";\ndocument.getElementById(\"error_status_field\").className = \"error_hint error_hint1\";\ndisable_input(1);\ndisable_button(1);\nrtime_obj=document.getElementById(\"rtime\");\ncountdownfunc();\ncountdownid = window.setInterval(countdownfunc,1000);\n}\nelse if(flag == 8){\ndocument.getElementById(\"login_filed\").style.display =\"none\";\ndocument.getElementById(\"logout_field\").style.display =\"\";\n}\nelse if(flag == 9){\ndocument.getElementById(\"login_filed\").style.display =\"none\";\ndocument.getElementById(\"nologin_field\").style.display =\"\";\n}\nelse{\ndocument.getElementById(\"error_status_field\").style.display =\"none\";\n}\n}\ndocument.form.login_username.focus();\n/*register keyboard event*/\ndocument.form.login_username.onkeyup = function(e){\ne=e||event;\nif(e.keyCode == 13){\ndocument.form.login_passwd.focus();\nreturn false;\n}\n};\ndocument.form.login_username.onkeypress = function(e){\ne=e||event;\nif(e.keyCode == 13){\nreturn false; }\n};\ndocument.form.login_passwd.onkeyup = function(e){\ne=e||event;\nif(e.keyCode == 13){\nlogin();\nreturn false;\n}\n};\ndocument.form.login_passwd.onkeypress = function(e){\ne=e||event;\nif(e.keyCode == 13){\nreturn false;\n}\n};\nif(history.pushState != undefined) history.pushState(\"\", document.title, window.location.pathname);\n}\nfunction countdownfunc(){\nremaining_time_min = checkTime(Math.floor(remaining_time/60));\nremaining_time_sec = checkTime(Math.floor(remaining_time%60));\nremaining_time_show = remaining_time_min +\":\"+ remaining_time_sec;\nrtime_obj.innerHTML = remaining_time_show;\nif (remaining_time==0){\nclearInterval(countdownid);\nsetTimeout(\"top.location.href='/Main_Login.asp';\", 2000);\n}\nremaining_time--;\n}\nfunction login(){\nvar trim = function(val){\nval = val+'';\nfor (var startIndex=0;startIndex<val.length && val.substring(startIndex,startIndex+1) == ' ';startIndex++);\nfor (var endIndex=val.length-1; endIndex>startIndex && val.substring(endIndex,endIndex+1) == ' ';endIndex--);\nreturn val.substring(startIndex,endIndex+1);\n}\nif(!window.btoa){\nwindow.btoa = function(input){\nvar keyStr = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=\";\nvar output = \"\";\nvar chr1, chr2, chr3, enc1, enc2, enc3, enc4;\nvar i = 0;\nvar utf8_encode = function(string) {\nstring = string.replace(/\\r\\n/g,\"\\n\");\nvar utftext = \"\";\nfor (var n = 0; n < string.length; n++) {\nvar c = string.charCodeAt(n);\nif (c < 128) {\nutftext += String.fromCharCode(c);\n}\nelse if((c > 127) && (c < 2048)) {\nutftext += String.fromCharCode((c >> 6) | 192);\nutftext += String.fromCharCode((c & 63) | 128);\n}\nelse {\nutftext += String.fromCharCode((c >> 12) | 224);\nutftext += String.fromCharCode(((c >> 6) & 63) | 128);\nutftext += String.fromCharCode((c & 63) | 128);\n}\n}\nreturn utftext;\n};\ninput = utf8_encode(input);\nwhile (i < input.length) {\nchr1 = input.charCodeAt(i++);\nchr2 = input.charCodeAt(i++);\nchr3 = input.charCodeAt(i++);\nenc1 = chr1 >> 2;\nenc2 = ((chr1 & 3) << 4) | (chr2 >> 4);\nenc3 = ((chr2 & 15) << 2) | (chr3 >> 6);\nenc4 = chr3 & 63;\nif (isNaN(chr2)) {\nenc3 = enc4 = 64;\n}\nelse if (isNaN(chr3)) {\nenc4 = 64;\n}\noutput = output +\nkeyStr.charAt(enc1) + keyStr.charAt(enc2) +\nkeyStr.charAt(enc3) + keyStr.charAt(enc4);\n}\nreturn output;\n};\n}\ndocument.form.login_username.value = trim(document.form.login_username.value);\ndocument.form.login_authorization.value = btoa(document.form.login_username.value + ':' + document.form.login_passwd.value);\ndocument.form.login_username.disabled = true;\ndocument.form.login_passwd.disabled = true;\ntry{\nif(redirect_page == \"\"\n|| redirect_page == \"Logout.asp\"\n|| redirect_page == \"Main_Login.asp\"\n|| redirect_page.indexOf(\" \") != -1\n|| redirect_page.indexOf(\"//\") != -1\n|| redirect_page.indexOf(\"http\") != -1\n|| (redirect_page.indexOf(\".asp\") == -1 && redirect_page.indexOf(\".htm\") == -1 && redirect_page != \"send_IFTTTPincode.cgi\" && redirect_page != \"cfg_onboarding.cgi\")\n){\ndocument.form.next_page.value = \"\";\n}\nelse{\ndocument.form.next_page.value = redirect_page;\n}\n}\ncatch(e){\ndocument.form.next_page.value = \"\";\n}\ndocument.form.submit();\n}\nfunction disable_input(val){\nvar disable_input_x = document.getElementsByClassName('form_input');\nfor(i=0;i<disable_input_x.length;i++){\nif(val == 0)\ndisable_input_x[i].disabled = true;\nelse\ndisable_input_x[i].style.display = \"none\";\n}\n}\nfunction disable_button(val){\nif(val == 0)\ndocument.getElementsByClassName('button')[0].disabled = true;\nelse\ndocument.getElementsByClassName('button')[0].style.display = \"none\";\n}\nfunction checkTime(i){\nif (i<10){\ni=\"0\" + i\n}\nreturn i\n}\n</script>\n</head>\n<body class=\"wrapper\" onload=\"initial();\">\n<iframe name=\"hidden_frame\" id=\"hidden_frame\" width=\"0\" height=\"0\" frameborder=\"0\"></iframe>\n<iframe id=\"dmRedirection\" width=\"0\" height=\"0\" frameborder=\"0\" scrolling=\"no\" src=\"\"></iframe>\n<form method=\"post\" name=\"form\" action=\"login.cgi\" target=\"\">\n<input type=\"hidden\" name=\"group_id\" value=\"\">\n<input type=\"hidden\" name=\"action_mode\" value=\"\">\n<input type=\"hidden\" name=\"action_script\" value=\"\">\n<input type=\"hidden\" name=\"action_wait\" value=\"5\">\n<input type=\"hidden\" name=\"current_page\" value=\"Main_Login.asp\">\n<input type=\"hidden\" name=\"next_page\" value=\"Main_Login.asp\">\n<input type=\"hidden\" name=\"login_authorization\" value=\"\">\n<div class=\"div_table main_field_gap\">\n<div class=\"div_tr\">\n<div class=\"title_name\">\n<div class=\"div_td img_gap\">\n<div class=\"login_img\"></div>\n</div>\n<div class=\"div_td\">Sign In</div>\n</div>\n<div class=\"prod_madelName\">DSL-AC68U</div>\n<div id=\"login_filed\">\n<div class=\"p1 title_gap\">Sign in with your ASUS router account</div>\n<div id=\"name_title_ie\" style=\"display:none;margin:20px 0 -10px 78px;\" class=\"p1 title_gap\">Username</div>\n<div class=\"title_gap\">\n<input type=\"text\" id=\"login_username\" name=\"login_username\" tabindex=\"1\" class=\"form_input\" maxlength=\"20\" autocapitalize=\"off\" autocomplete=\"off\" placeholder=\"Username\">\n</div>\n<div id=\"password_title_ie\" style=\"display:none;margin:20px 0 -20px 78px;\" class=\"p1 title_gap\">Password</div>\n<div class=\"password_gap\">\n<input type=\"password\" name=\"login_passwd\" tabindex=\"2\" class=\"form_input\" maxlength=\"16\" placeholder=\"Password\" autocapitalize=\"off\" autocomplete=\"off\">\n</div>\n<div class=\"error_hint\" style=\"display:none;\" id=\"error_status_field\"></div>\n<div class=\"button\" onclick=\"login();\">Sign In</div>\n</div>\n<div id=\"nologin_field\" style=\"display:none;\">\n<div class=\"p1 title_gap\"></div>\n<div class=\"nologin\">\nYou cannot login unless logout another user first.\n<div id=\"logined_ip_str\"></div>\n</div>\n</div>\n<div id=\"logout_field\" style=\"display:none;\">\n<div class=\"p1 title_gap\"></div>\n<div class=\"nologin\">You have logged out successfully.</div>\n</div>\n</div>\n</div>\n</form>\n</body>\n</html>\n\n",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 265,
+					"bodySize": 11913,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 4,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 157,
+					"connect": 4,
+					"wait": 11
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 177
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:21.010Z",
+				"request": {
+					"method": "GET",
+					"url": "http://router.asus.com/images/New_ui/login_bg.png",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "router.asus.com"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "image/webp,*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://router.asus.com/Main_Login.asp"
+						}
+					],
+					"queryString": [],
+					"headersSize": 344,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:21 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "max-age=300"
+						},
+						{
+							"name": "Content-Type",
+							"value": "image/png"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 40079,
+						"mimeType": "image/png",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 211,
+					"bodySize": 40079,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 185,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 175,
+					"connect": 4,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 364
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:21.124Z",
+				"request": {
+					"method": "GET",
+					"url": "http://router.asus.com/images/New_ui/icon_titleName.png",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "router.asus.com"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "image/webp,*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://router.asus.com/Main_Login.asp"
+						}
+					],
+					"queryString": [],
+					"headersSize": 350,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:22 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "max-age=300"
+						},
+						{
+							"name": "Content-Type",
+							"value": "image/png"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 825,
+						"mimeType": "image/png",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 211,
+					"bodySize": 825,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 7,
+					"blocked": 0,
+					"dns": 0,
+					"receive": 12,
+					"connect": 36,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 57
+			},
+			{
+				"pageref": "www.bbc.co.uk",
+				"startedDateTime": "2021-02-12T17:06:21.283Z",
+				"request": {
+					"method": "GET",
+					"url": "http://router.asus.com/images/favicon.png",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Host",
+							"value": "router.asus.com"
+						},
+						{
+							"name": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0"
+						},
+						{
+							"name": "Accept",
+							"value": "image/webp,*/*"
+						},
+						{
+							"name": "Accept-Language",
+							"value": "en-GB,en;q=0.5"
+						},
+						{
+							"name": "Accept-Encoding",
+							"value": "gzip, deflate"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Referer",
+							"value": "http://router.asus.com/Main_Login.asp"
+						}
+					],
+					"queryString": [],
+					"headersSize": 336,
+					"bodySize": 0,
+					"comment": ""
+				},
+				"response": {
+					"status": 200,
+					"statusText": "Ok",
+					"httpVersion": "HTTP/1.0",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Server",
+							"value": "httpd/2.0"
+						},
+						{
+							"name": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"name": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"name": "Date",
+							"value": "Fri, 12 Feb 2021 17:06:22 GMT"
+						},
+						{
+							"name": "Cache-Control",
+							"value": "max-age=300"
+						},
+						{
+							"name": "Content-Type",
+							"value": "image/png"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 735,
+						"mimeType": "image/png",
+						"comment": ""
+					},
+					"redirectURL": "",
+					"headersSize": 211,
+					"bodySize": 735,
+					"comment": ""
+				},
+				"cache": {
+					
+				},
+				"timings": {
+					"comment": "",
+					"ssl": -1,
+					"send": 48,
+					"blocked": -1,
+					"dns": -1,
+					"receive": 25,
+					"connect": 97,
+					"wait": 0
+				},
+				"serverIPAddress": "192.168.1.1",
+				"comment": "",
+				"time": 171
+			}
+		],
+		"comment": ""
+	}
+}
