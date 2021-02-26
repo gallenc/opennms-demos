@@ -52,7 +52,7 @@ public class ElasticTest1 {
 //    	URL url = uri.toURL();
 
 		String pollId = UUID.randomUUID().toString();
-		for (int i = 1; i < 3; i++) {
+		for (int i = 1; i < 300; i++) {
 			ObjectMapper mapper = new ObjectMapper();
 			JsonNode jsonNode = mapper.createObjectNode().put("pollid", pollId).put("timestamp", new Date().getTime())
 					.put("protocol", "http").put("domainName", "example.com").put("ipaddress", "192.168.0.1")

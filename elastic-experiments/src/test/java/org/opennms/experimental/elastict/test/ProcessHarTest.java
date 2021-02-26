@@ -1,6 +1,8 @@
 package org.opennms.experimental.elastict.test;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -40,7 +42,7 @@ public class ProcessHarTest {
 
 	@Test
 	public void test2() throws JsonProcessingException, IOException {
-		
+
 		System.out.println("****************Test TWO");
 
 		File inputFile = new File("./src/test/resources/testfiles/test_har_1.json");
@@ -57,21 +59,21 @@ public class ProcessHarTest {
 		// injecting values
 		OnmsHarPollMetaData onmsHarPollMetaData = new OnmsHarPollMetaData();
 		JsonNode pollMetadata = mapper.convertValue(onmsHarPollMetaData, JsonNode.class);
-		
-		Map<String, JsonNode> injectedValues = new LinkedHashMap<>();
-		
-		injectedValues.put("pollMetadata",pollMetadata);
 
-		JsonNode output =  jslt.apply(injectedValues, input);
+		Map<String, JsonNode> injectedValues = new LinkedHashMap<>();
+
+		injectedValues.put("pollMetadata", pollMetadata);
+
+		JsonNode output = jslt.apply(injectedValues, input);
 
 		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(output);
 		System.out.println(json);
 
 	}
-	
+
 	@Test
 	public void test3() throws JsonProcessingException, IOException {
-		
+
 		System.out.println("****************Test THREE");
 
 		File inputFile = new File("./src/test/resources/testfiles/test_har_1-small.json");
@@ -88,17 +90,30 @@ public class ProcessHarTest {
 		// injecting values
 		OnmsHarPollMetaData onmsHarPollMetaData = new OnmsHarPollMetaData();
 		JsonNode pollMetadata = mapper.convertValue(onmsHarPollMetaData, JsonNode.class);
-		
-		Map<String, JsonNode> injectedValues = new LinkedHashMap<>();
-		
-		injectedValues.put("pollMetadata",pollMetadata);
 
-		JsonNode output =  jslt.apply(injectedValues, input);
+		Map<String, JsonNode> injectedValues = new LinkedHashMap<>();
+
+		injectedValues.put("pollMetadata", pollMetadata);
+
+		JsonNode output = jslt.apply(injectedValues, input);
 
 		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(output);
 		System.out.println(json);
 
-	}
+		File outputFile = new File("./target/test3.json");
+		BufferedWriter writer = null;
+		
+		try {
+			outputFile.delete();
+			writer = new BufferedWriter(new FileWriter(outputFile));
+			writer.write(json);
+		} catch (Exception ex) {
+			throw new RuntimeException("cannot write to file: " + outputFile.getAbsolutePath(), ex);
+		} finally {
+			if (writer != null)
+				writer.close();
+		}
 
+	}
 
 }
