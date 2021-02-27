@@ -19,7 +19,7 @@ import io.searchbox.core.Update;
 import io.searchbox.indices.CreateIndex;
 import io.searchbox.indices.DeleteIndex;
 
-public class ElasticTest1 {
+public class ElasticTest2 {
 
 	@Test
 	public void test1() {
@@ -27,15 +27,15 @@ public class ElasticTest1 {
 		JestClient jestClient = jestClient();
 
 		try {
-			System.out.println("deleting index webrequests");
-			jestClient.execute(new DeleteIndex.Builder("webrequests").build());
+			System.out.println("deleting index webrequests2");
+			jestClient.execute(new DeleteIndex.Builder("webrequests2").build());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
-			System.out.println("creating index webrequests");
-			jestClient.execute(new CreateIndex.Builder("webrequests").build());
+			System.out.println("creating index webrequests2");
+			jestClient.execute(new CreateIndex.Builder("webrequests2").build());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

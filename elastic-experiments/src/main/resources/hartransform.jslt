@@ -1,0 +1,15 @@
+// comment - injects pollMetaData
+// removes content text and leaves the rest of the entry
+[ for ( .log.entries)
+{
+  "pollMetadata" : $pollMetaData,
+  "response" : {
+    "content" : {
+       "text" : "REMOVED",
+        * : .
+     }
+  },
+  * : .
+}
+
+]

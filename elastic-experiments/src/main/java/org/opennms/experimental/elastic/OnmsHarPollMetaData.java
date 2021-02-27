@@ -1,11 +1,11 @@
-package org.opennms.experimental.elastict.test;
+package org.opennms.experimental.elastic;
 
 import java.util.Date;
 import java.util.UUID;
 
 public class OnmsHarPollMetaData {
 
-	Date startTime = null;
+	Date startTime = new Date();
 	String pollerlocation = null;
 	Long latitude = null;
 	Long longitude = null;

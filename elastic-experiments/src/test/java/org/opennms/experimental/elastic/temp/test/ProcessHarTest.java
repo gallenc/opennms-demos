@@ -1,4 +1,4 @@
-package org.opennms.experimental.elastict.test;
+package org.opennms.experimental.elastic.temp.test;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.junit.Test;
+import org.opennms.experimental.elastic.OnmsHarPollMetaData;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
