@@ -1,8 +1,10 @@
-package org.opennms.experimental.elastic;
+package org.opennms.elastic.jestclient;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.opennms.elastic.client.ElasticClient;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;

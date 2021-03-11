@@ -1,4 +1,4 @@
-package org.opennms.experimental.elastic;
+package org.opennms.harmapper;
 
 import java.util.Date;
 import java.util.UUID;

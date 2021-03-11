@@ -7,6 +7,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.opennms.elastic.client.ElasticClient;
+import org.opennms.elastic.jestclient.JestElasticClient;
+import org.opennms.harmapper.HarTransformMapper;
+import org.opennms.harmapper.OnmsHarPollMetaData;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;

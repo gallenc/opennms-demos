@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import org.junit.Test;
+import org.opennms.harmapper.HarTransformMapper;
+import org.opennms.harmapper.OnmsHarPollMetaData;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;

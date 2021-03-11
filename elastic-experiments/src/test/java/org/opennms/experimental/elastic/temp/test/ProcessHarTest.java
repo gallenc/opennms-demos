@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.junit.Test;
-import org.opennms.experimental.elastic.OnmsHarPollMetaData;
+import org.opennms.harmapper.OnmsHarPollMetaData;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

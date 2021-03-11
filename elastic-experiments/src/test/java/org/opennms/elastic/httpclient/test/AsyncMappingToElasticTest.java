@@ -6,10 +6,10 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.opennms.elastic.client.ElasticClient;
 import org.opennms.elastic.httpclient.ApacheElasticClient;
-import org.opennms.experimental.elastic.ElasticClient;
-import org.opennms.experimental.elastic.HarTransformMapper;
-import org.opennms.experimental.elastic.OnmsHarPollMetaData;
+import org.opennms.harmapper.HarTransformMapper;
+import org.opennms.harmapper.OnmsHarPollMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

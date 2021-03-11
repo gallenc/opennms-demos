@@ -1,4 +1,4 @@
-package org.opennms.experimental.elastic;
+package org.opennms.harmapper;
 
 import java.io.BufferedReader;
 import java.io.File;
