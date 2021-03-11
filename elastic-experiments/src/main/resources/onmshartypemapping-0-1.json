@@ -1,0 +1,217 @@
+{
+	"mappings": {
+		"onmshartype": {
+			"properties": {
+				"cache": {
+					"type": "object"
+				},
+				"comment": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"pageref": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"pollMetadata": {
+					"properties": {
+						"pollId": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"startTime": {
+							"type": "long"
+						}
+					}
+				},
+				"request": {
+					"properties": {
+						"bodySize": {
+							"type": "long"
+						},
+						"comment": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"headers": {
+							"properties": {
+								"name": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"value": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								}
+							}
+						},
+						"headersSize": {
+							"type": "long"
+						},
+						"httpVersion": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"method": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"queryString": {
+							"properties": {
+								"name": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"value": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								}
+							}
+						},
+						"url": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						}
+					}
+				},
+				"response": {
+					"properties": {
+						"content": {
+							"properties": {
+								"comment": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"mimeType": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"size": {
+									"type": "long"
+								},
+								"text": {
+									"type": "text",
+									"fields": {
+										"keyword": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"serverIPAddress": {
+					"type" : "ip"
+				},
+				"startedDateTime": {
+					"type": "date"
+				},
+				"time": {
+					"type": "long"
+				},
+				"timings": {
+					"properties": {
+						"blocked": {
+							"type": "long"
+						},
+						"comment": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						},
+						"connect": {
+							"type": "long"
+						},
+						"dns": {
+							"type": "long"
+						},
+						"receive": {
+							"type": "long"
+						},
+						"send": {
+							"type": "long"
+						},
+						"ssl": {
+							"type": "long"
+						},
+						"wait": {
+							"type": "long"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

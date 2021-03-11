@@ -41,7 +41,7 @@ public class SeleniumExecutorToElasticTest {
 	public void before() {
 		seleniumExecutor = new SeleniumExecutor();
 		harTransformMapper = new HarTransformMapper();
-		elasticClient = new ElasticClient(elasticUrl, indexName, indexType);
+		elasticClient = new JestElasticClient(elasticUrl, indexName, indexType);
 	}
 
 	@Test

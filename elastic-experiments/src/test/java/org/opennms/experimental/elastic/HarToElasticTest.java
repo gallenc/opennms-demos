@@ -22,7 +22,7 @@ public class HarToElasticTest {
 	
 	@Before
 	public void before() {
-		elasticClient = new ElasticClient(elasticUrl,indexName, indexType);
+		elasticClient = new JestElasticClient(elasticUrl,indexName, indexType);
 	}
 	
 	@Test

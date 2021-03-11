@@ -12,7 +12,8 @@
 		<maven.compiler.target>8</maven.compiler.target>
 
 		<browsermob-core-version>2.1.5</browsermob-core-version>
-		<selenium-java-version>3.141.59</selenium-java-version>
+<!-- 		<selenium-java-version>3.141.59</selenium-java-version> -->
+		<selenium-java-version>3.14.0</selenium-java-version>
 		<webdrivermanager-version>4.2.2</webdrivermanager-version>
 
 		<log4j.version>2.12.1</log4j.version>

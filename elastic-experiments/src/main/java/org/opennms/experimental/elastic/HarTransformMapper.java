@@ -20,7 +20,7 @@ import com.schibsted.spt.data.jslt.Parser;
 
 public class HarTransformMapper {
 
-	private final String DEFAULT_JSTL_HAR_TRANSFORM_FILE = "hartransform.jslt";
+	private final String DEFAULT_JSTL_HAR_TRANSFORM_FILE = "hartransform-0-1.jslt";
 
 	private final ObjectMapper mapper = new ObjectMapper();
 
