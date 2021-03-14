@@ -1,0 +1,7 @@
+<model-import xmlns="http://xmlns.opennms.org/xsd/config/model-import" date-stamp="2021-02-07T05:48:45.348-05:00" foreign-source="testweb" last-import="2021-02-07T05:48:52.445-05:00">
+   <node foreign-id="1612542229746" node-label="papajohns">
+      <interface ip-addr="23.39.127.103" status="1" snmp-primary="P">
+         <monitored-service service-name="seleniumExample"/>
+      </interface>
+   </node>
+</model-import>

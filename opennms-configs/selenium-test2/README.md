@@ -1,4 +1,4 @@
-# Test OpenNMS SeleniumMonitor Scripts
+# Test OpenNMS SeleniumMonitor Scripts - run against Horizon 27.0.3
 to run you need to ensure latest Selenium installed
 
 ```
