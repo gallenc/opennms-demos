@@ -96,11 +96,11 @@ class OpennmsSeleniumExample {
 		//TODO these need replaced in opennms.properties
 		System.setProperty("webdriver.gecko.driver", "/opt/geckodriver/geckodriver");
         System.setProperty("harMapperJsltFileName", "hartransform-0-1.jslt");
-        //System.setProperty("seleniumElasticUrl", null);
+        System.setProperty("seleniumElasticUrl", "http://localhost:9200");
         //System.setProperty("seleniumElasticUsername", null);
         //System.setProperty("seleniumElasticPassword", null);
-        //System.setProperty("seleniumElasticIndexName", null);
-        //System.setProperty("seleniumElasticIndexType", null);
+        System.setProperty("seleniumElasticIndexName", "onmshardata");
+        System.setProperty("seleniumElasticIndexType", "onmshartype");
 		
 	}
 
