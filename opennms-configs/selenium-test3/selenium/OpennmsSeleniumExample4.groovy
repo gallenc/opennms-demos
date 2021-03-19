@@ -25,7 +25,7 @@
  *     http://www.opennms.org/
  *     http://www.opennms.com/
  *******************************************************************************/
-// DEMONSTRATES USING BMP TO CAPTURE HAR and transfor for elastic search
+// DEMONSTRATES USING BMP TO CAPTURE HAR and transfer to elastic search
 package selenium;
 
 import static org.junit.Assert.*;
@@ -127,14 +127,13 @@ class OpennmsSeleniumExample {
 							+ " opennmsHome=" + opennmsHome);
 
 					File mappingFile = new File(opennmsHome+"/etc/selenium/"+ harMapperJsltFileName);
-					LOG.debug("setUp() mappingfile location:" + mappingFile.getAbsolutePath());
-
+					LOG.debug("testSelenium mappingfile location:"+mappingFile.getAbsolutePath());
 					harTransformMapper = new HarTransformMapper(mappingFile);
 
 					if (seleniumElasticUrl == null) {
-						LOG.debug("setUp()  elastic not configured so not setting up elasticClient");
+						LOG.debug("testSelenium elastic not configured so not setting up elasticClient");
 					} else {
-						LOG.debug("setUp() elastic configured");
+						LOG.debug("testSelenium writing to elastic");
 						elasticClient = new ApacheElasticClient(seleniumElasticUrl, seleniumElasticIndexName,
 								seleniumElasticIndexType, seleniumElasticUsername, seleniumElasticPassword);
 					}
@@ -155,50 +154,54 @@ class OpennmsSeleniumExample {
 				try {
 					LOG.debug("testSelenium() running selenium test baseUrl=" + baseUrl);
 
-					// note that it appears proxy uses volatile variables and cannot be initialised in the before method
-					LOG.debug("testSelenium() setting up browsermob proxy");
+					LOG.debug("setting up browsermob proxy");
 					// start the proxy
 					proxy = new BrowserMobProxyServer();
+					// CaptureType.getAllContentCaptureTypes()
 					proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
 
 					proxy.start(0);
-					LOG.debug("testSelenium()  BrowserMobProxyServer started: ");
+					LOG.debug("***************** BrowserMobProxyServer started: ");
 
 					// get the Selenium proxy object
 					Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
 
 					FirefoxBinary firefoxBinary = new FirefoxBinary();
-					LOG.debug("testSelenium() HEADLESS");
+					LOG.debug("setUp() HEADLESS");
 					firefoxBinary.addCommandLineOptions("--headless");
 
-					LOG.debug("testSelenium() BMP PROXY");
+					LOG.debug("setUp() BMP PROXY");
 
 					FirefoxOptions firefoxOptions = new FirefoxOptions();
 					// set up proxy
 					firefoxOptions.setCapability(CapabilityType.PROXY, seleniumProxy);
 					firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 
-					LOG.debug("testSelenium() FIREFOX BINARY LOG LEVEL TRACE");
+					LOG.debug("setUp() FIREFOX BINARY LOG LEVEL TRACE");
 					firefoxOptions.setBinary(firefoxBinary);
 					firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
+					LOG.debug("setUp() 4");
 
 					driver = new FirefoxDriver(firefoxOptions);
+					LOG.debug("setUp() 5");
+					// driver = new FirefoxDriver();
+					// driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+					LOG.debug("setUp() 6");
 
-					driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 					LOG.debug("setUp() driver started");
 
 					LOG.debug("testSelenium() CREATE NEW HAR NAME=" + baseUrl);
 					proxy.newHar(baseUrl);
 
-					LOG.debug("testSelenium() driver get base url=" + baseUrl);
+					// open | / |
+					LOG.debug("testSelenium() driver=" + driver);
 
 					driver.get(baseUrl);
 
 					LOG.debug("testSelenium() finished getting base url");
 
-					// insert your own tests here if they fail, the test will end and capture will complete
-					
 					// click | link=Our Story |
 					// driver.findElement(By.linkText("Latest Offers")).click();
 
@@ -209,66 +212,50 @@ class OpennmsSeleniumExample {
 					// Us")).getText())
 					// fail("selenium test failed script");
 
+					LOG.debug("testSelenium() Get the HAR data");
+					Har har = proxy.getHar();
+					LOG.debug("har:" + har);
+					proxy.endHar();
+
+					StringWriter writer = new StringWriter();
+					try {
+						har.writeTo(writer);
+					} catch (IOException e) {
+						LOG.error("testSelenium() HAR WRITING EXCEPTION ", e);
+					}
+					String harString = writer.toString();
+					LOG.debug("testSelenium() HAR data: " + harString);
+
+					ObjectMapper mapper = new ObjectMapper();
+
+					String json = null;
+					JsonNode harJsonNode = null;
+
+					OnmsHarPollMetaData pollMetaData = new OnmsHarPollMetaData();
+
+					ArrayNode jsonArrayData = null;
+					try {
+						harJsonNode = mapper.readTree(harString);
+						jsonArrayData = harTransformMapper.transform(harJsonNode, pollMetaData);
+						LOG.debug("testSelenium transformed har into array of " + jsonArrayData.size() + " objects :");
+						json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(harJsonNode);
+						LOG.debug(json);
+					} catch (JsonProcessingException e) {
+						LOG.error("testSelenium problem parsing har file", e);
+					}
+
+					if (elasticClient == null) {
+						LOG.debug("testSelenium elastic not configured not writing to elastic search");
+					} else {
+						LOG.debug("testSelenium writing to elastic");
+						elasticClient.sendBulkJsonArray(jsonArrayData);
+					}
+
 				} catch (java.lang.AssertionError ae) {
 					LOG.debug("testSelenium() selenium poller assertion error: ", ae);
 					throw ae;
-					
 				} catch (Throwable ex) {
 					LOG.error("testSelenium() selenium script exception ", ex);
-					
-				} finally {
-					
-					// at end of tests gather har and complete
-					try {
-
-						LOG.debug("testSelenium() Get the HAR data");
-						Har har = proxy.getHar();
-						LOG.trace("har:" + har);
-						proxy.endHar();
-
-						StringWriter writer = new StringWriter();
-						try {
-							har.writeTo(writer);
-						} catch (IOException e) {
-							LOG.error("testSelenium() HAR writing exception ", e);
-						}
-						
-						String harString = writer.toString();
-
-						LOG.trace("testSelenium() HAR data: " + harString);
-
-						ObjectMapper mapper = new ObjectMapper();
-
-						String json = null;
-						JsonNode harJsonNode = null;
-
-						OnmsHarPollMetaData pollMetaData = new OnmsHarPollMetaData();
-
-						ArrayNode jsonArrayData = null;
-						try {
-							harJsonNode = mapper.readTree(harString);
-							jsonArrayData = harTransformMapper.transform(harJsonNode, pollMetaData);
-							LOG.debug("testSelenium transformed har into array of " + jsonArrayData.size()
-									+ " objects :");
-							json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(harJsonNode);
-							LOG.trace(json);
-						} catch (JsonProcessingException e) {
-							LOG.error("testSelenium problem parsing har file", e);
-						}
-
-						if (elasticClient == null) {
-							LOG.debug("testSelenium elastic not configured not writing to elastic search");
-						} else {
-							LOG.debug("testSelenium writing to elastic");
-							try {
-								elasticClient.sendBulkJsonArray(jsonArrayData);
-							} catch (Throwable ex) {
-								LOG.error("testSelenium() error sending bulk data to elastic ", ex);
-							}
-						}
-					} catch (Throwable th) {
-						LOG.error("testSelenium() Error in finalising har processing ", th);
-					}
 				}
 			}
 		});
@@ -277,19 +264,14 @@ class OpennmsSeleniumExample {
 	@After
 	public void tearDown() throws Exception {
 
-		if (driver != null) {
-			try {
-				driver.quit();
-			} catch (Exception e) {
-				LOG.error("tearDown() driver quit exception ", e);
-			}
-		}
+		if (driver != null)
+			driver.quit();
 
-		if ((proxy != null)) {
+		if ((proxy != null) && proxy.isStarted()) {
 			try {
 				proxy.stop();
 			} catch (Exception e) {
-				LOG.error("tearDown() proxy stopping exception ", e);
+				LOG.error("testSelenium() PROXY STOPPING EXCEPTION ", e);
 			}
 		}
 
