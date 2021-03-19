@@ -72,7 +72,7 @@ import net.lightbody.bmp.mitm.TrustSource;
 class OpennmsSeleniumExample {
 	private Logger LOG = LoggerFactory.getLogger("selenium");
 
-	private String baseUrl = "http://www.papajohns.co.uk/";
+	private String baseUrl = "baseUrl-undefined";
 	private int timeout = 10;
 	private StringBuffer verificationErrors = new StringBuffer();
 

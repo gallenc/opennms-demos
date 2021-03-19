@@ -352,15 +352,14 @@
          <rra>RRA:MIN:0.5:288:366</rra>
       </rrd>
       
-         <service name="seleniumExample" interval="150000" user-defined="false" status="on">
-
-<!--         <service name="seleniumExample" interval="300000" user-defined="false" status="on"> -->
+         <service name="seleniumExample" interval="300000" user-defined="false" status="on">
          <parameter key="retry" value="1" />
          <parameter key="timeout" value="30000" />
          <parameter key="rrd-repository" value="/usr/share/opennms/share/rrd/response" />
          <parameter key="rrd-base-name" value="SeleniumExample" /> <!-- change name accordingly -->
          <parameter key="ds-name" value="SeleniumExample" /> <!-- change name accordingly -->
-         <parameter key="base-url" value="http://www.papajohns.co.uk/" /> <!-- using monitored service's ip address--> 
+         <!--  <parameter key="base-url" value="http://www.papajohns.co.uk/" /> --> <!-- using monitored service's url address--> 
+         <parameter key="base-url" value="${requisition:serviceurl|undefined}" /> <!-- using monitored service's metadata--> 
 
          <parameter key="selenium-test" value="OpennmsSeleniumExample.groovy" />
        </service>
