@@ -83,7 +83,49 @@ class OpennmsSeleniumExample  {
                   try {
                      LOG.debug("setUp() starting selenium script baseUrl="+baseUrl+" timeout="+timeout);
 
-                     
+                     LOG.debug("setting up browsermob proxy");
+                     // start the proxy
+                     proxy = new BrowserMobProxyServer();
+                     //CaptureType.getAllContentCaptureTypes()
+                     proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
+
+                     proxy.start(0);
+                     LOG.debug("***************** BrowserMobProxyServer started: ");
+
+                     // get the Selenium proxy object
+                     Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+
+                     System.setProperty("webdriver.gecko.driver", "/opt/geckodriver/geckodriver");
+
+
+                     FirefoxBinary firefoxBinary = new FirefoxBinary();
+                     LOG.debug("setUp() HEADLESS");
+                     firefoxBinary.addCommandLineOptions("--headless");
+
+                     LOG.debug("setUp() BMP PROXY");
+
+                     FirefoxOptions firefoxOptions = new FirefoxOptions();
+                     // set up proxy
+                     firefoxOptions.setCapability(CapabilityType.PROXY, seleniumProxy);
+                     firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+
+                     LOG.debug("setUp() FIREFOX BINARY LOG LEVEL TRACE");
+                     firefoxOptions.setBinary(firefoxBinary);
+                     firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
+                     LOG.debug("setUp() 4");
+
+                     driver = new FirefoxDriver(firefoxOptions);
+                     LOG.debug("setUp() 5");
+                     //                   driver = new FirefoxDriver();
+                     //driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+                     LOG.debug("setUp() 6");
+
+                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+                     LOG.debug("setUp() driver started");
+					 
+					 LOG.debug("testSelenium() CREATE NEW HAR NAME="+baseUrl);
+					 proxy.newHar(baseUrl);
 
                   } catch (Throwable ex){
                      LOG.error("setUp() selenium script exception ",ex);
@@ -100,50 +142,6 @@ class OpennmsSeleniumExample  {
                public void run() {
                   try {
                      LOG.debug("testSelenium() running selenium test baseUrl="+baseUrl);
-					 
-					 LOG.debug("setting up browsermob proxy");
-					 // start the proxy
-					 proxy = new BrowserMobProxyServer();
-					 //CaptureType.getAllContentCaptureTypes()
-					 proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
-
-					 proxy.start(0);
-					 LOG.debug("***************** BrowserMobProxyServer started: ");
-
-					 // get the Selenium proxy object
-					 Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
-
-					 System.setProperty("webdriver.gecko.driver", "/opt/geckodriver/geckodriver");
-
-
-					 FirefoxBinary firefoxBinary = new FirefoxBinary();
-					 LOG.debug("setUp() HEADLESS");
-					 firefoxBinary.addCommandLineOptions("--headless");
-
-					 LOG.debug("setUp() BMP PROXY");
-
-					 FirefoxOptions firefoxOptions = new FirefoxOptions();
-					 // set up proxy
-					 firefoxOptions.setCapability(CapabilityType.PROXY, seleniumProxy);
-					 firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-
-					 LOG.debug("setUp() FIREFOX BINARY LOG LEVEL TRACE");
-					 firefoxOptions.setBinary(firefoxBinary);
-					 firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
-					 LOG.debug("setUp() 4");
-
-					 driver = new FirefoxDriver(firefoxOptions);
-					 LOG.debug("setUp() 5");
-					 //                   driver = new FirefoxDriver();
-					 //driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
-					 LOG.debug("setUp() 6");
-
-					 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-					 LOG.debug("setUp() driver started");
-					 
-					 LOG.debug("testSelenium() CREATE NEW HAR NAME="+baseUrl);
-					 proxy.newHar(baseUrl);
 
                      // open | / |
                      LOG.debug("testSelenium() driver="+driver);
