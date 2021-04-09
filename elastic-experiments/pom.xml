@@ -1,171 +1,177 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.opennms.experiemental</groupId>
-	<artifactId>elastic-experiments</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.opennms.experiemental</groupId>
+   <artifactId>elastic-experiments</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
 
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>8</maven.compiler.source>
-		<maven.compiler.target>8</maven.compiler.target>
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>8</maven.compiler.source>
+      <maven.compiler.target>8</maven.compiler.target>
 
-		<jackson2Version>2.10.0</jackson2Version>
-		<jestVersion>6.3.1</jestVersion>
-		<!-- <jestVersion>5.3.3</jestVersion> opennms -->
+      <jackson2Version>2.10.0</jackson2Version>
+      <jestVersion>6.3.1</jestVersion>
+      <!-- <jestVersion>5.3.3</jestVersion> opennms -->
 
-		<log4j.version>2.12.1</log4j.version>
-		<slf4j.version>1.7.12</slf4j.version>
+      <log4j.version>2.12.1</log4j.version>
+      <slf4j.version>1.7.12</slf4j.version>
 
-		<browsermob-core-version>2.1.5</browsermob-core-version>
-		<!-- <selenium-java-version>3.141.59</selenium-java-version> -->
-		<selenium-java-version>3.14.0</selenium-java-version>
-		<!-- <webdrivermanager-version>4.2.2</webdrivermanager-version> -->
-	</properties>
+      <browsermob-core-version>2.1.5</browsermob-core-version>
+      <!-- <selenium-java-version>3.141.59</selenium-java-version> -->
+      <selenium-java-version>3.14.0</selenium-java-version>
+      <!-- <webdrivermanager-version>4.2.2</webdrivermanager-version> -->
+   </properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>
-			</plugin>
-		</plugins>
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+         </plugin>
+      </plugins>
 
-	</build>
+   </build>
 
-	<dependencies>
-
-		<!-- <dependency> -->
-		<!-- <groupId>io.searchbox</groupId> -->
-		<!-- <artifactId>jest-complete-osgi</artifactId> -->
-		<!-- <version>5.3.3</version> -->
-		<!-- </dependency> -->
-
-		<dependency>
-			<groupId>com.schibsted.spt.data</groupId>
-			<artifactId>jslt</artifactId>
-			<version>0.1.11</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.searchbox</groupId>
-			<artifactId>jest</artifactId>
-			<version>${jestVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson2Version}</version>
-		</dependency>
-
-		<!-- see https://dzone.com/articles/whats-junit-and-hamcrest -->
-		<!-- <dependency> -->
-		<!-- <groupId>junit</groupId> -->
-		<!-- <artifactId>junit</artifactId> -->
-		<!-- <version>4.12</version> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.hamcrest</groupId>
-					<artifactId>hamcrest-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
+   <dependencies>
+      <dependency>
+         <groupId>org.opennms.core</groupId>
+         <artifactId>org.opennms.core.logging</artifactId>
+         <version>28.0.0-SNAPSHOT</version>
+         <scope>test</scope>
+      </dependency>
 
 
-		<dependency>
-			<groupId>net.lightbody.bmp</groupId>
-			<artifactId>browsermob-core</artifactId>
-			<version>${browsermob-core-version}</version>
-		</dependency>
+      <!-- <dependency> -->
+      <!-- <groupId>io.searchbox</groupId> -->
+      <!-- <artifactId>jest-complete-osgi</artifactId> -->
+      <!-- <version>5.3.3</version> -->
+      <!-- </dependency> -->
 
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>${selenium-java-version}</version>
+      <dependency>
+         <groupId>com.schibsted.spt.data</groupId>
+         <artifactId>jslt</artifactId>
+         <version>0.1.11</version>
+      </dependency>
 
-		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>io.github.bonigarcia</groupId> -->
-		<!-- <artifactId>webdrivermanager</artifactId> -->
-		<!-- <version>${webdrivermanager-version}</version> -->
-		<!-- </dependency> -->
+      <dependency>
+         <groupId>io.searchbox</groupId>
+         <artifactId>jest</artifactId>
+         <version>${jestVersion}</version>
+      </dependency>
+      <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+         <version>${jackson2Version}</version>
+      </dependency>
 
-		<!-- needed for FirfoxDriver -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>23.0</version>
-			<!-- <version>21.0</version> -->
-		</dependency>
-
-		<!-- logging dependencies -->
-
-		<!-- SLF4J Logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-
-	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>central</id>
-			<name>Maven Central</name>
-			<url>https://repo1.maven.org/maven2/</url>
-		</repository>
-		<repository>
-			<id>opennms-repo</id>
-			<name>OpenNMS Repository</name>
-			<url>http://maven.opennms.org/content/groups/opennms.org-release/</url>
-		</repository>
-		<repository>
-			<id>opennms-snapshot-repo</id>
-			<name>OpenNMS Snapshot Repository</name>
-			<url>http://maven.opennms.org/content/groups/opennms.org-snapshot/</url>
-		</repository>
-		<repository>
-			<id>opennms-repo-2</id>
-			<name>OpenNMS Repo 2</name>
-			<url>https://repo.opennms.org/maven2/</url>
-		</repository>
+      <!-- see https://dzone.com/articles/whats-junit-and-hamcrest -->
+      <!-- <dependency> -->
+      <!-- <groupId>junit</groupId> -->
+      <!-- <artifactId>junit</artifactId> -->
+      <!-- <version>4.12</version> -->
+      <!-- <scope>test</scope> -->
+      <!-- </dependency> -->
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>4.12</version>
+         <scope>test</scope>
+         <exclusions>
+            <exclusion>
+               <groupId>org.hamcrest</groupId>
+               <artifactId>hamcrest-core</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      <dependency>
+         <groupId>org.hamcrest</groupId>
+         <artifactId>hamcrest-library</artifactId>
+         <version>1.3</version>
+         <scope>test</scope>
+      </dependency>
 
 
-	</repositories>
+      <dependency>
+         <groupId>net.lightbody.bmp</groupId>
+         <artifactId>browsermob-core</artifactId>
+         <version>${browsermob-core-version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.seleniumhq.selenium</groupId>
+         <artifactId>selenium-java</artifactId>
+         <version>${selenium-java-version}</version>
+
+      </dependency>
+      <!-- <dependency> -->
+      <!-- <groupId>io.github.bonigarcia</groupId> -->
+      <!-- <artifactId>webdrivermanager</artifactId> -->
+      <!-- <version>${webdrivermanager-version}</version> -->
+      <!-- </dependency> -->
+
+      <!-- needed for FirfoxDriver -->
+      <dependency>
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>23.0</version>
+         <!-- <version>21.0</version> -->
+      </dependency>
+
+      <!-- logging dependencies -->
+
+      <!-- SLF4J Logging -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-api</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+
+   </dependencies>
+
+   <repositories>
+      <repository>
+         <id>central</id>
+         <name>Maven Central</name>
+         <url>https://repo1.maven.org/maven2/</url>
+      </repository>
+      <repository>
+         <id>opennms-repo</id>
+         <name>OpenNMS Repository</name>
+         <url>http://maven.opennms.org/content/groups/opennms.org-release/</url>
+      </repository>
+      <repository>
+         <id>opennms-snapshot-repo</id>
+         <name>OpenNMS Snapshot Repository</name>
+         <url>http://maven.opennms.org/content/groups/opennms.org-snapshot/</url>
+      </repository>
+      <repository>
+         <id>opennms-repo-2</id>
+         <name>OpenNMS Repo 2</name>
+         <url>https://repo.opennms.org/maven2/</url>
+      </repository>
+
+
+   </repositories>
 
 
 
