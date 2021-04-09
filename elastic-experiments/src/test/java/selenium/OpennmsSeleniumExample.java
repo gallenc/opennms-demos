@@ -79,7 +79,7 @@ class OpennmsSeleniumExample  {
 
 	@Before
 	public void setUp() throws Exception {
-		Logging.withPrefix("selenium_groovey", new Runnable() {
+		Logging.withPrefix("selenium_groovy", new Runnable() {
 
 					public void run() {
 						try {
@@ -136,7 +136,7 @@ class OpennmsSeleniumExample  {
 	@Test
 	public void testSelenium() throws Exception {
 
-		Logging.withPrefix("selenium_groovey", new Runnable() {
+		Logging.withPrefix("selenium_groovy", new Runnable() {
 
 					public void run() {
 						try {

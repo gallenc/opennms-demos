@@ -217,7 +217,7 @@
         <KeyValuePair key="vacuumd"              value="WARN" />
         <KeyValuePair key="web"                  value="WARN" />
 
-        <KeyValuePair key="selenium_groovey"     value="DEBUG" />
+        <KeyValuePair key="selenium_groovy"     value="DEBUG" />
 
       </DynamicThresholdFilter>
 
