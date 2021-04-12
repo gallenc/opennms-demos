@@ -54,6 +54,8 @@ import org.opennms.harmapper.HarTransformMapper;
 import org.opennms.harmapper.OnmsHarPollMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.opennms.netmgt.poller.MonitoredService;
+import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

@@ -58,6 +58,8 @@ import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.proxy.CaptureType;
 import net.lightbody.bmp.mitm.TrustSource;
+import org.opennms.netmgt.poller.MonitoredService;
+import java.util.Map;
 
 class OpennmsSeleniumExample  {
    private  Logger LOG = LoggerFactory.getLogger("selenium");

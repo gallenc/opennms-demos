@@ -46,7 +46,8 @@ import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.opennms.core.logging.Logging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.opennms.netmgt.poller.MonitoredService;
+import java.util.Map;
 
 
 class OpennmsSeleniumExample  {

@@ -38,6 +38,8 @@ import org.junit.Test
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.opennms.netmgt.poller.MonitoredService;
+import java.util.Map;
 
 class OpennmsSeleniumExample  {
     
