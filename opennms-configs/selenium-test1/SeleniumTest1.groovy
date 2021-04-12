@@ -25,7 +25,7 @@ class SeleniumTest1  {
     private int timeout = 30;
     private StringBuffer verificationErrors = new StringBuffer();
     
-    public SeleniumTest1(String url, int timeoutInSeconds) {
+    public SeleniumTest1(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
         baseUrl = url;
         timeout = timeoutInSeconds;
     }

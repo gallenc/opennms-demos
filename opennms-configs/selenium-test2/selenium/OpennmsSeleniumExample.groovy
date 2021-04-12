@@ -46,7 +46,7 @@ class OpennmsSeleniumExample  {
     private int timeout = 30;
     private StringBuffer verificationErrors = new StringBuffer();
     
-    public OpennmsSeleniumExample(String url, int timeoutInSeconds) {
+    public OpennmsSeleniumExample(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
         baseUrl = url;
         timeout = timeoutInSeconds;
     }

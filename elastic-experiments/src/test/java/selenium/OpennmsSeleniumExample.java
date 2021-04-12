@@ -38,6 +38,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.opennms.netmgt.poller.MonitoredService;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -72,7 +75,7 @@ class OpennmsSeleniumExample  {
 	private BrowserMobProxy proxy = null;
 
 
-	public OpennmsSeleniumExample(String url, int timeoutInSeconds) {
+	public OpennmsSeleniumExample(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
 		baseUrl = url;
 		timeout = timeoutInSeconds;
 	}

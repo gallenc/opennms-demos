@@ -43,6 +43,13 @@
          <scope>test</scope>
       </dependency>
 
+      <dependency>
+         <groupId>org.opennms.features.poller</groupId>
+         <artifactId>org.opennms.features.poller.api</artifactId>
+         <version>28.0.0-SNAPSHOT</version>
+         <scope>test</scope>
+      </dependency>
+
 
       <!-- <dependency> -->
       <!-- <groupId>io.searchbox</groupId> -->

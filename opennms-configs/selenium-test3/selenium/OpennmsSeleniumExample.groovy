@@ -89,7 +89,7 @@ class OpennmsSeleniumExample {
 	private String seleniumElasticIndexName = null;
 	private String seleniumElasticIndexType = null;
 
-	public OpennmsSeleniumExample(String url, int timeoutInSeconds) {
+	public OpennmsSeleniumExample(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
 		baseUrl = url;
 		timeout = timeoutInSeconds;
 

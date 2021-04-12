@@ -70,7 +70,7 @@ class OpennmsSeleniumExample  {
    private BrowserMobProxy proxy = null;
 
 
-   public OpennmsSeleniumExample(String url, int timeoutInSeconds) {
+   public OpennmsSeleniumExample(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
       baseUrl = url;
       timeout = timeoutInSeconds;
    }
