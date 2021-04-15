@@ -1,0 +1,36 @@
+need to allow multiple urls per address
+
+need to set firefox caching
+
+
+https://stackoverflow.com/questions/18378331/clear-firefox-cache-in-selenium-ide
+ FirefoxProfile profile = new FirefoxProfile();
+    profile.setPreference("browser.cache.disk.enable", false);
+    profile.setPreference("browser.cache.memory.enable", false);
+    profile.setPreference("browser.cache.offline.enable", false);
+    profile.setPreference("network.http.use-cache", false);
+    FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+    driver = new FirefoxDriver(options);
+
+however may slow down browsing
+
+profile.setPreference("browser.cache.disk.parent_directory", "C:\\temp");
+may want to set cache 
+
+it seems firefox headless does work without virtual driver and also can take pictures
+
+
+selenium settings may be useful
+
+https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/40
+
+screenshots https://stackoverflow.com/questions/48245424/how-to-use-screenshot-in-headless-firefox-in-selenium-with-python
+
+Headless firefox (without xvfb) example · GitHub - gists · GitHub
+https://gist.github.com/nddipiazza/231d38a4b5aacbaaa54d00ed4dd253b0
+
+
+https://gist.github.com/djangofan/1d0e3de52ac5375d3f52249c5293d588      Gist Tracert.java
+
+
+important https://github.com/vmi/selenese-runner-java runs IDE
