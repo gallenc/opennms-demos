@@ -45,7 +45,10 @@ services:
 
   horizon:
 #    image: ${DOCKER_REGISTRY:-docker.io}/${DOCKER_ORG:-opennms}/${HORIZON_OCI:-horizon}:${ONMS_VERSION:-27.1.0}
-    image: opennms/horizon:jira_NMS-13190
+#    image: opennms/horizon:jira_NMS-13190
+    image: opennms/horizon:HAR-FIREFOX
+# use the docker file in same directory to build the image
+#    build: .
     container_name: horizon
     hostname: horizon
     depends_on: 
