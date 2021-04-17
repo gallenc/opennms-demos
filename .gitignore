@@ -38,6 +38,9 @@ nb-configuration.xml
 *.ear
 *.zip
 
+# Docker image files #
+*.oci
+
 # Log files
 derby.log
 

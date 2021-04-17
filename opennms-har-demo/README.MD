@@ -30,7 +30,14 @@ In this folder run
 docker build --tag="opennms/horizon:HAR-FIREFOX" .
 
 ```
-this will create an image with firefox and selenium installed based on the Dockerfile in this folder
+this will create an image with firefox and selenium installed based on the Dockerfile in this folder.
+
+you can export this image using
+```
+docker image save "opennms/horizon:HAR-FIREFOX" -o horizon_HAR-FIREFOX.oci
+
+```
+
 
 ## docker compose
 
