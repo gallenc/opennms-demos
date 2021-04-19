@@ -37,11 +37,28 @@ you can export this image using
 docker image save "opennms/horizon:HAR-FIREFOX" -o horizon_HAR-FIREFOX.oci
 
 ```
+you can re-import this image using
+```
+ docker image load -i horizon_jira_NMS-13190.oci
 
+( or  docker image load < horizon_jira_NMS-13190.oci)
+```
 
 ## docker compose
 
-The docker compose script expectes the opennms/horizon:HAR-FIREFOX to already be built
+The docker compose script expects the opennms/horizon:HAR-FIREFOX to already be built
+
+There are two compose files, one expecting to run behind a proxy and the other plane
+
+docker-compose-with-proxy.yaml
+
+docker-compose.yaml
+
+if not running behind a proxy, remove
+```
+opennms.properties.d/apacheproxy.properties
+```
+
 
 to start use docker compose
 
@@ -82,6 +99,7 @@ admin@opennms> log:tail
 password opennms = admin, admin
 
 http://localhost:8980/opennms
+
 
 ## setting up har polling
 to start polling a web site and saving data to elastic, you need to 
