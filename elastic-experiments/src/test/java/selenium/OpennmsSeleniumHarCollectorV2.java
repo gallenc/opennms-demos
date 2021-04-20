@@ -25,7 +25,7 @@
  *     http://www.opennms.org/
  *     http://www.opennms.com/
  *******************************************************************************/
-// DEMONSTRATES USING BMP TO CAPTURE HAR and transform for elastic search v1
+// DEMONSTRATES USING BMP TO CAPTURE HAR and transform for elastic search v2
 package selenium;
 
 import static org.junit.Assert.*;
@@ -149,15 +149,7 @@ class OpennmsSeleniumHarCollectorV2 {
 		} catch (Throwable ex) {
 			LOG.error("setUp() selenium script exception ", ex);
 			
-		} finally {
-		    if (proxy != null) {
-	            try {
-	                proxy.stop();
-	            } catch (Exception e) {
-	                LOG.error("setUp()  proxy stopping exception ", e);
-	            }
-	        }
-		}
+		} 
 	}
 
 

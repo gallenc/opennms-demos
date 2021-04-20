@@ -25,7 +25,7 @@
  *     http://www.opennms.org/
  *     http://www.opennms.com/
  *******************************************************************************/
-// DEMONSTRATES USING BMP TO CAPTURE HAR and transform for elastic search v1
+// DEMONSTRATES USING BMP TO CAPTURE HAR and transform for elastic search v2
 package selenium;
 
 import static org.junit.Assert.*;
@@ -134,10 +134,23 @@ class OpennmsSeleniumHarCollector {
 						seleniumElasticIndexType, seleniumElasticUsername, seleniumElasticPassword);
 			}
 
-		} catch (Throwable ex) {
-			LOG.error("setUp() selenium script exception ", ex);
-		}
-	}
+            LOG.debug("setUp() setting up browsermob proxy");
+            // start the proxy
+            proxy = new BrowserMobProxyServer();
+            proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, 
+                    CaptureType.RESPONSE_HEADERS, 
+                    CaptureType.RESPONSE_BINARY_CONTENT,  
+                    CaptureType.RESPONSE_CONTENT);
+            proxy.setTrustAllServers(true); //note might be better to use cert authorities
+            
+            proxy.start(0);
+            LOG.debug("setUp() BrowserMobProxyServer started: ");
+
+        } catch (Throwable ex) {
+            LOG.error("setUp() selenium script exception ", ex);
+            
+        } 
+    }
 
 
 	@Test
@@ -146,20 +159,6 @@ class OpennmsSeleniumHarCollector {
 
 		try {
 			LOG.debug("testSelenium() running selenium test baseUrl=" + baseUrl);
-
-			// note that it appears proxy uses volatile variables and cannot be initialised
-			// in the before method
-			LOG.debug("testSelenium() setting up browsermob proxy");
-			// start the proxy
-			proxy = new BrowserMobProxyServer();
-			proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, 
-					CaptureType.RESPONSE_HEADERS, 
-					CaptureType.RESPONSE_BINARY_CONTENT,  
-					CaptureType.RESPONSE_CONTENT);
-			proxy.setTrustAllServers(true); //note might be better to use cert authorities
-			
-			proxy.start(0);
-			LOG.debug("testSelenium()  BrowserMobProxyServer started: ");
 
 			// get the Selenium proxy object
 			Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
