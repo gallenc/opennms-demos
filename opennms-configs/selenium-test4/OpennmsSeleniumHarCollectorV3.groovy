@@ -56,8 +56,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.opennms.netmgt.poller.MonitoredService;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -98,23 +99,54 @@ class OpennmsSeleniumHarCollector {
 	private MonitoredService m_svc = null;
 	private Map<String, Object> m_parameters = null;
 	private OnmsHarPollMetaData pollMetaData = new OnmsHarPollMetaData();
+    private Integer svcNodeId = null;
+    private String svcNodeLocation = null;
+    private String svcNodeLabel = null;
+    private String svcHostAddress = null;
 
-	public OpennmsSeleniumHarCollector(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
+    public OpennmsSeleniumHarCollector(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
 		baseUrl = url;
 		timeout = timeoutInSeconds;
 		m_svc = svc;
 		m_parameters = parameters;
-        pollMetaData.setPollerlocation(m_svc.getNodeLocation());
 	}
+
+    private class ExtendedResolver extends NativeResolver {
+        
+        String m_baseUrlHost=null;
+        InetAddress m_resolveAddress=null; 
+        
+        public ExtendedResolver(String baseUrlHost, InetAddress resolveAddress) {
+            super();
+            m_baseUrlHost = baseUrlHost;
+            m_resolveAddress = resolveAddress;
+        }
+        
+        
+        public Collection<InetAddress> resolve(String originalHost) {
+            if (m_baseUrlHost.equals(originalHost)) {
+                List<InetAddress> addrList = new ArrayList<InetAddress>();
+                addrList.add(m_resolveAddress);
+                return addrList; 
+            }
+            return super.resolve(originalHost);
+        }
+    }
 
     @Before
     public void setUp() throws Exception {
 
         try {
-			LOG.debug("setUp() starting selenium script baseUrl=" + baseUrl + " timeout=" + timeout 
-			          + " nodeLabel=" + m_svc.getNodeLabel() +" nodeId=" + m_svc.getNodeId() +" nodeLocation=" + m_svc.getNodeLocation() 
-			          +" serviceAddress=" + m_svc.getAddress().getHostAddress());
             
+            svcNodeId = m_svc.getNodeId();
+            svcNodeLocation = m_svc.getNodeLocation();
+            svcNodeLabel = m_svc.getNodeLabel();
+            svcHostAddress = m_svc.getAddress().getHostAddress();
+
+            LOG.debug("setUp() starting selenium script baseUrl=" + baseUrl + " timeout=" + timeout + " nodeLabel="
+                    + svcNodeLabel + " nodeId=" + svcNodeId + " nodeLocation=" + svcNodeLocation + " serviceAddress="
+                    + svcHostAddress);
+
             if(System.getProperty("webdriver.gecko.driver")==null){
                 System.setProperty("webdriver.gecko.driver", "/opt/geckodriver/geckodriver");
             }
@@ -144,36 +176,31 @@ class OpennmsSeleniumHarCollector {
             } else {
                 LOG.debug("setUp() elastic configured");
                 elasticClient = new ApacheElasticClient(seleniumElasticUrl, seleniumElasticIndexName,
-                        seleniumElasticIndexType, seleniumElasticUsername, seleniumElasticPassword);
+                seleniumElasticIndexType, seleniumElasticUsername, seleniumElasticPassword);
             }
 
             LOG.debug("setUp() setting up browsermob proxy");
             // start the proxy
             proxy = new BrowserMobProxyServer();
             proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, 
-                    CaptureType.RESPONSE_HEADERS, 
-                    CaptureType.RESPONSE_BINARY_CONTENT,  
-                    CaptureType.RESPONSE_CONTENT);
+                                     CaptureType.RESPONSE_HEADERS,
+                                     CaptureType.RESPONSE_BINARY_CONTENT,
+                                     CaptureType.RESPONSE_CONTENT);
             proxy.setTrustAllServers(true); //note might be better to use cert authorities
             
             // if not a dummy address then use address in resolver
-            if(! m_svc.getAddress().getHostAddress().startsWith("254.0.0")) {
-                LOG.debug("setUp() dummy host address."+m_svc.getAddress().getHostAddress()+ " Do standard name resolution");
+            URL baseUrlURL = new URL(baseUrl);
+            String baseUrlHost = baseUrlURL.getHost();
+            
+            if ( svcHostAddress.startsWith("254.0.0.")) {
+                LOG.debug("setUp() dummy host address=" + svcHostAddress + " Do standard name resolution for "+ baseUrlHost + " DNS name resolution");
             }else {
-                URL baseUrlURL = new URL(baseUrl);
-                String baseUrlHost = baseUrlURL.getHost();
-                LOG.debug("setUp() standard host address."+m_svc.getAddress().getHostAddress()+ " Substitute "+baseUrlHost + " DNS name resolution");
+
+                LOG.debug("setUp() real host address=" + svcHostAddress + " Substitute for " + baseUrlHost + " DNS name resolution");
                 // Override domain resolution baseUrl
                 // So that it points to the service IP address
-                proxy.setHostNameResolver(new NativeResolver(){
-                    @Override
-                    public Collection<InetAddress> resolve(String originalHost) {
-                        if(baseUrlHost.equals(originalHost)){
-                           return Arrays.asList(new InetAddress[]{  m_svc.getAddress()});
-                        }
-                        return super.resolve(originalHost);
-                    }
-                });
+                NativeResolver resolver = new ExtendedResolver(baseUrlHost, m_svc.getAddress());
+                proxy.setHostNameResolver(resolver);
             }
             
             proxy.start(0);
@@ -208,7 +235,7 @@ class OpennmsSeleniumHarCollector {
 			firefoxOptions.setLogLevel(FirefoxDriverLogLevel.INFO);
 
 			int implicitlyWait = timeout - 10000; 
-			LOG.debug("testSelenium()  create driver: pageloadtimeout ms = "+ timeout+ " implicitlyWait ms= "+implicitlyWait);
+            LOG.debug("testSelenium()  create driver: pageloadtimeout ms = " + timeout + " implicitlyWait ms= "+implicitlyWait);
 			driver = new FirefoxDriver(firefoxOptions);
 			driver.manage().deleteAllCookies();
 			driver.manage().timeouts().pageLoadTimeout(timeout, TimeUnit.MILLISECONDS);
@@ -263,6 +290,7 @@ class OpennmsSeleniumHarCollector {
 
 				ArrayNode jsonArrayData = null;
 				try {
+                    pollMetaData.setPollerlocation(svcNodeLocation);
 					harJsonNode = mapper.readTree(harString);
 					jsonArrayData = harTransformMapper.transform(harJsonNode, pollMetaData);
 					LOG.debug("testSelenium transformed har into array of " + jsonArrayData.size() + " objects :");
