@@ -56,8 +56,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.opennms.netmgt.poller.MonitoredService;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -76,241 +77,265 @@ import net.lightbody.bmp.proxy.dns.NativeResolver;
 import net.lightbody.bmp.mitm.TrustSource;
 
 class OpennmsSeleniumHarCollectorV3 {
-	private Logger LOG = LoggerFactory.getLogger("selenium");
+    private Logger LOG = LoggerFactory.getLogger("selenium");
 
-	private String baseUrl = "baseUrl-undefined";
-	private int timeout = 10;
-	private StringBuffer verificationErrors = new StringBuffer();
+    private String baseUrl = "baseUrl-undefined";
+    private int timeout = 10;
+    private StringBuffer verificationErrors = new StringBuffer();
 
-	private WebDriver driver = null;
-	private BrowserMobProxy proxy = null;
-	private HarTransformMapper harTransformMapper = null;
-	private ApacheElasticClient elasticClient = null;
+    private WebDriver driver = null;
+    private BrowserMobProxy proxy = null;
+    private HarTransformMapper harTransformMapper = null;
+    private ApacheElasticClient elasticClient = null;
 
-	private String geckoDriver = null;
-	private String harMapperJsltFileName = null;
-	private String seleniumElasticUrl = null;
-	private String seleniumElasticPassword = null;
-	private String seleniumElasticUsername = null;
-	private String opennmsHome = null;
-	private String seleniumElasticIndexName = null;
-	private String seleniumElasticIndexType = null;
-	private MonitoredService m_svc = null;
-	private Map<String, Object> m_parameters = null;
-	private OnmsHarPollMetaData pollMetaData = new OnmsHarPollMetaData();
+    private String geckoDriver = null;
+    private String harMapperJsltFileName = null;
+    private String seleniumElasticUrl = null;
+    private String seleniumElasticPassword = null;
+    private String seleniumElasticUsername = null;
+    private String opennmsHome = null;
+    private String seleniumElasticIndexName = null;
+    private String seleniumElasticIndexType = null;
+    private MonitoredService m_svc = null;
+    private Map<String, Object> m_parameters = null;
+    private OnmsHarPollMetaData pollMetaData = new OnmsHarPollMetaData();
+    private Integer svcNodeId = null;
+    private String svcNodeLocation = null;
+    private String svcNodeLabel = null;
+    private String svcHostAddress = null;
 
-	public OpennmsSeleniumHarCollectorV3(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
-		baseUrl = url;
-		timeout = timeoutInSeconds;
-		m_svc = svc;
-		m_parameters = parameters;
-        pollMetaData.setPollerlocation(m_svc.getNodeLocation());
-	}
+    public OpennmsSeleniumHarCollectorV3(String url, int timeoutInSeconds, MonitoredService svc, Map<String, Object> parameters) {
+        baseUrl = url;
+        timeout = timeoutInSeconds;
+        m_svc = svc;
+        m_parameters = parameters;
+    }
+    
+    private class ExtendedResolver extends NativeResolver {
+        
+        String m_baseUrlHost=null;
+        InetAddress m_resolveAddress=null; 
+        
+        public ExtendedResolver(String baseUrlHost, InetAddress resolveAddress) {
+            super();
+            m_baseUrlHost = baseUrlHost;
+            m_resolveAddress = resolveAddress;
+        }
+        
+        @Override
+        public Collection<InetAddress> resolve(String originalHost) {
+            if (m_baseUrlHost.equals(originalHost)) {
+                List<InetAddress> addrList = new ArrayList<InetAddress>();
+                addrList.add(m_resolveAddress);
+                return addrList; 
+            }
+            return super.resolve(originalHost);
+        }
+    }
 
-	@Before
-	public void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
-		try {
-			LOG.debug("setUp() starting selenium script baseUrl=" + baseUrl + " timeout=" + timeout 
-			          + " nodeLabel=" + m_svc.getNodeLabel() +" nodeId=" + m_svc.getNodeId() +" nodeLocation=" + m_svc.getNodeLocation() 
-			          +" serviceAddress=" + m_svc.getAddress().getHostAddress());
-			
-			if(System.getProperty("webdriver.gecko.driver")==null){
-			    System.setProperty("webdriver.gecko.driver", "/opt/geckodriver/geckodriver");
-			}
-			
-            geckoDriver = System.getProperty("webdriver.gecko.driver"); 
-			
-			harMapperJsltFileName = System.getProperty("harMapperJsltFileName", "hartransform-0-1.jslt");
-			seleniumElasticUrl = System.getProperty("seleniumElasticUrl", "http://localhost:9200");
-			seleniumElasticUsername = System.getProperty("seleniumElasticUsername", "");
-			seleniumElasticPassword = System.getProperty("seleniumElasticPassword", "");
-			seleniumElasticIndexName = System.getProperty("seleniumElasticIndexName", "onmshardata");
-			seleniumElasticIndexType = System.getProperty("seleniumElasticIndexType", "onmshartype");
-			opennmsHome = System.getProperty("opennms.home");
+        try {
 
-			LOG.debug("setUp() System settings location of webdriver.gecko.driver ="+geckoDriver
-			        + " harMapperJsltFileName =" + harMapperJsltFileName + " seleniumElasticUrl="
-					+ seleniumElasticUrl + " seleniumElasticUsername=" + seleniumElasticUsername
-					+ " seleniumElasticPassword =" + seleniumElasticPassword + " opennmsHome=" + opennmsHome);
+            svcNodeId = m_svc.getNodeId();
+            svcNodeLocation = m_svc.getNodeLocation();
+            svcNodeLabel = m_svc.getNodeLabel();
+            svcHostAddress = m_svc.getAddress().getHostAddress();
 
-			File mappingFile = new File(opennmsHome+"/etc/selenium/"+ harMapperJsltFileName);
-			LOG.debug("setUp() mappingfile location:" + mappingFile.getAbsolutePath());
+            LOG.debug("setUp() starting selenium script baseUrl=" + baseUrl + " timeout=" + timeout + " nodeLabel="
+                    + svcNodeLabel + " nodeId=" + svcNodeId + " nodeLocation=" + svcNodeLocation + " serviceAddress="
+                    + svcHostAddress);
 
-			harTransformMapper = new HarTransformMapper(mappingFile);
+            if (System.getProperty("webdriver.gecko.driver") == null) {
+                System.setProperty("webdriver.gecko.driver", "/opt/geckodriver/geckodriver");
+            }
 
+            geckoDriver = System.getProperty("webdriver.gecko.driver");
 
-			if (seleniumElasticUrl == null | "".equals(seleniumElasticUrl) ) {
-				LOG.debug("setUp()  seleniumElasticUrl not configured so not setting up elasticClient");
-			} else {
-				LOG.debug("setUp() elastic configured");
-				elasticClient = new ApacheElasticClient(seleniumElasticUrl, seleniumElasticIndexName,
-						seleniumElasticIndexType, seleniumElasticUsername, seleniumElasticPassword);
-			}
+            harMapperJsltFileName = System.getProperty("harMapperJsltFileName", "hartransform-0-1.jslt");
+            seleniumElasticUrl = System.getProperty("seleniumElasticUrl", "http://localhost:9200");
+            seleniumElasticUsername = System.getProperty("seleniumElasticUsername", "");
+            seleniumElasticPassword = System.getProperty("seleniumElasticPassword", "");
+            seleniumElasticIndexName = System.getProperty("seleniumElasticIndexName", "onmshardata");
+            seleniumElasticIndexType = System.getProperty("seleniumElasticIndexType", "onmshartype");
+            opennmsHome = System.getProperty("opennms.home");
+
+            LOG.debug("setUp() System settings location of webdriver.gecko.driver =" + geckoDriver
+                    + " harMapperJsltFileName =" + harMapperJsltFileName + " seleniumElasticUrl="
+                    + seleniumElasticUrl + " seleniumElasticUsername=" + seleniumElasticUsername
+                    + " seleniumElasticPassword =" + seleniumElasticPassword + " opennmsHome=" + opennmsHome);
+
+            File mappingFile = new File(opennmsHome + "/etc/selenium/" + harMapperJsltFileName);
+            LOG.debug("setUp() mappingfile location:" + mappingFile.getAbsolutePath());
+
+            harTransformMapper = new HarTransformMapper(mappingFile);
+
+            if (seleniumElasticUrl == null | "".equals(seleniumElasticUrl)) {
+                LOG.debug("setUp()  seleniumElasticUrl not configured so not setting up elasticClient");
+            } else {
+                LOG.debug("setUp() elastic configured");
+                elasticClient = new ApacheElasticClient(seleniumElasticUrl, seleniumElasticIndexName,
+                seleniumElasticIndexType, seleniumElasticUsername, seleniumElasticPassword);
+            }
 
             LOG.debug("setUp() setting up browsermob proxy");
             // start the proxy
             proxy = new BrowserMobProxyServer();
-            proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS, 
-                    CaptureType.RESPONSE_HEADERS, 
-                    CaptureType.RESPONSE_BINARY_CONTENT,  
-                    CaptureType.RESPONSE_CONTENT);
-            proxy.setTrustAllServers(true); //note might be better to use cert authorities
-            
+            proxy.setHarCaptureTypes(CaptureType.REQUEST_HEADERS,
+                                     CaptureType.RESPONSE_HEADERS,
+                                     CaptureType.RESPONSE_BINARY_CONTENT,
+                                     CaptureType.RESPONSE_CONTENT);
+            proxy.setTrustAllServers(true); // note might be better to use cert authorities
+
             // if not a dummy address then use address in resolver
-            if(! m_svc.getAddress().getHostAddress().startsWith("254.0.0")) {
-                LOG.debug("setUp() dummy host address."+m_svc.getAddress().getHostAddress()+ " Do standard name resolution");
-            }else {
-                URL baseUrlURL = new URL(baseUrl);
-                String baseUrlHost = baseUrlURL.getHost();
-                LOG.debug("setUp() standard host address."+m_svc.getAddress().getHostAddress()+ " Substitute "+baseUrlHost + " DNS name resolution");
+            URL baseUrlURL = new URL(baseUrl);
+            String baseUrlHost = baseUrlURL.getHost();
+            
+            if ( svcHostAddress.startsWith("254.0.0.")) {
+                LOG.debug("setUp() dummy host address=" + svcHostAddress + " Do standard name resolution for "+ baseUrlHost + " DNS name resolution");
+            } else {
+
+                LOG.debug("setUp() real host address=" + svcHostAddress + " Substitute for " + baseUrlHost + " DNS name resolution");
                 // Override domain resolution baseUrl
                 // So that it points to the service IP address
-                proxy.setHostNameResolver(new NativeResolver(){
-                    @Override
-                    public Collection<InetAddress> resolve(String originalHost) {
-                        if(baseUrlHost.equals(originalHost)){
-                           return Arrays.asList(new InetAddress[]{  m_svc.getAddress()});
-                        }
-                        return super.resolve(originalHost);
-                    }
-                });
+                NativeResolver resolver = new ExtendedResolver(baseUrlHost, m_svc.getAddress());
+                proxy.setHostNameResolver(resolver);
             }
-            
+
             proxy.start(0);
             LOG.debug("setUp() BrowserMobProxyServer started: ");
 
-		} catch (Throwable ex) {
-			LOG.error("setUp() selenium script exception ", ex);
-			
-		} 
-	}
+        } catch (Throwable ex) {
+            LOG.error("setUp() selenium script exception ", ex);
 
+        }
+    }
 
-	@Test
-	public void testSelenium() throws Exception {
+    @Test
+    public void testSelenium() throws Exception {
 
+        try {
+            LOG.debug("testSelenium() running selenium test baseUrl=" + baseUrl);
 
-		try {
-			LOG.debug("testSelenium() running selenium test baseUrl=" + baseUrl);
+            // get the Selenium proxy object
+            Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
 
-			// get the Selenium proxy object
-			Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+            FirefoxBinary firefoxBinary = new FirefoxBinary();
+            firefoxBinary.addCommandLineOptions("--headless");
 
-			FirefoxBinary firefoxBinary = new FirefoxBinary();
-			firefoxBinary.addCommandLineOptions("--headless");
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            // set up proxy
+            firefoxOptions.setCapability(CapabilityType.PROXY, seleniumProxy);
+            firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+            firefoxOptions.setBinary(firefoxBinary);
+            firefoxOptions.setLogLevel(FirefoxDriverLogLevel.INFO);
 
-			FirefoxOptions firefoxOptions = new FirefoxOptions();
-			// set up proxy
-			firefoxOptions.setCapability(CapabilityType.PROXY, seleniumProxy);
-			firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-			firefoxOptions.setBinary(firefoxBinary);
-			firefoxOptions.setLogLevel(FirefoxDriverLogLevel.INFO);
+            int implicitlyWait = timeout - 10000;
+            LOG.debug("testSelenium()  create driver: pageloadtimeout ms = " + timeout + " implicitlyWait ms= "+implicitlyWait);
+            driver = new FirefoxDriver(firefoxOptions);
+            driver.manage().deleteAllCookies();
+            driver.manage().timeouts().pageLoadTimeout(timeout, TimeUnit.MILLISECONDS);
+            driver.manage().timeouts().implicitlyWait(implicitlyWait, TimeUnit.MILLISECONDS);
 
-			int implicitlyWait = timeout - 10000; 
-			LOG.debug("testSelenium()  create driver: pageloadtimeout ms = "+ timeout+ " implicitlyWait ms= "+implicitlyWait);
-			driver = new FirefoxDriver(firefoxOptions);
-			driver.manage().deleteAllCookies();
-			driver.manage().timeouts().pageLoadTimeout(timeout, TimeUnit.MILLISECONDS);
-			driver.manage().timeouts().implicitlyWait(implicitlyWait, TimeUnit.MILLISECONDS);
+            LOG.debug("setUp() driver started");
 
-			LOG.debug("setUp() driver started");
+            LOG.debug("testSelenium() create har name=" + baseUrl);
+            proxy.newHar(baseUrl);
 
-			LOG.debug("testSelenium() create har name=" + baseUrl);
-			proxy.newHar(baseUrl);
+            LOG.debug("testSelenium() driver get base url=" + baseUrl);
 
-			LOG.debug("testSelenium() driver get base url=" + baseUrl);
+            driver.get(baseUrl);
 
-			driver.get(baseUrl);
+            LOG.debug("testSelenium() finished getting base url");
 
-			LOG.debug("testSelenium() finished getting base url");
+            // insert your own tests here if they fail, the test will end and capture will
+            // complete
 
-			// insert your own tests here if they fail, the test will end and capture will
-			// complete
+        } catch (java.lang.AssertionError ae) {
+            LOG.debug("testSelenium() selenium poller assertion error: ", ae);
+            throw ae;
 
-		} catch (java.lang.AssertionError ae) {
-			LOG.debug("testSelenium() selenium poller assertion error: ", ae);
-			throw ae;
+        } catch (Throwable ex) {
+            LOG.error("testSelenium() selenium script exception ", ex);
 
-		} catch (Throwable ex) {
-			LOG.error("testSelenium() selenium script exception ", ex);
+        } finally {
 
-		} finally {
+            // at end of tests gather har and complete
+            try {
 
-			// at end of tests gather har and complete
-			try {
+                LOG.debug("testSelenium() Get the HAR data");
+                Har har = proxy.getHar();
+                LOG.trace("har:" + har);
+                proxy.endHar();
 
-				LOG.debug("testSelenium() Get the HAR data");
-				Har har = proxy.getHar();
-				LOG.trace("har:" + har);
-				proxy.endHar();
+                StringWriter writer = new StringWriter();
+                try {
+                    har.writeTo(writer);
+                } catch (IOException e) {
+                    LOG.error("testSelenium() HAR writing exception ", e);
+                }
 
-				StringWriter writer = new StringWriter();
-				try {
-					har.writeTo(writer);
-				} catch (IOException e) {
-					LOG.error("testSelenium() HAR writing exception ", e);
-				}
+                String harString = writer.toString();
 
-				String harString = writer.toString();
+                LOG.trace("testSelenium() HAR data: " + harString);
 
-				LOG.trace("testSelenium() HAR data: " + harString);
+                ObjectMapper mapper = new ObjectMapper();
 
-				ObjectMapper mapper = new ObjectMapper();
+                String json = null;
+                JsonNode harJsonNode = null;
 
-				String json = null;
-				JsonNode harJsonNode = null;
+                ArrayNode jsonArrayData = null;
+                try {
+                    pollMetaData.setPollerlocation(svcNodeLocation);
+                    pollMetaData.setPollerIp(svcHostAddress); //TODO ADD SERVICE FIELDS INTO METADATA
+                    harJsonNode = mapper.readTree(harString);
+                    jsonArrayData = harTransformMapper.transform(harJsonNode, pollMetaData);
+                    LOG.debug("testSelenium transformed har into array of " + jsonArrayData.size() + " objects :");
+                    json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(harJsonNode);
+                    LOG.trace(json);
+                } catch (JsonProcessingException e) {
+                    LOG.error("testSelenium problem parsing har file", e);
+                }
 
-				ArrayNode jsonArrayData = null;
-				try {
-					harJsonNode = mapper.readTree(harString);
-					jsonArrayData = harTransformMapper.transform(harJsonNode, pollMetaData);
-					LOG.debug("testSelenium transformed har into array of " + jsonArrayData.size() + " objects :");
-					json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(harJsonNode);
-					LOG.trace(json);
-				} catch (JsonProcessingException e) {
-					LOG.error("testSelenium problem parsing har file", e);
-				}
+                if (elasticClient == null) {
+                    LOG.debug("testSelenium elastic not configured not writing to elastic search");
+                } else {
+                    LOG.debug("testSelenium writing to elastic");
+                    try {
+                        elasticClient.sendBulkJsonArray(jsonArrayData);
+                    } catch (Throwable ex) {
+                        LOG.error("testSelenium() error sending bulk data to elastic ", ex);
+                    }
+                }
+            } catch (Throwable th) {
+                LOG.error("testSelenium() Error in finalising har processing ", th);
+            }
+        }
+    }
 
-				if (elasticClient == null) {
-					LOG.debug("testSelenium elastic not configured not writing to elastic search");
-				} else {
-					LOG.debug("testSelenium writing to elastic");
-					try {
-						elasticClient.sendBulkJsonArray(jsonArrayData);
-					} catch (Throwable ex) {
-						LOG.error("testSelenium() error sending bulk data to elastic ", ex);
-					}
-				}
-			} catch (Throwable th) {
-				LOG.error("testSelenium() Error in finalising har processing ", th);
-			}
-		}
-	}
+    @After
+    public void tearDown() throws Exception {
 
+        if (driver != null) {
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                LOG.error("tearDown() driver quit exception ", e);
+            }
+        }
 
-	@After
-	public void tearDown() throws Exception {
+        if ((proxy != null)) {
+            try {
+                proxy.stop();
+            } catch (Exception e) {
+                LOG.error("tearDown() proxy stopping exception ", e);
+            }
+        }
 
-		if (driver != null) {
-			try {
-				driver.quit();
-			} catch (Exception e) {
-				LOG.error("tearDown() driver quit exception ", e);
-			}
-		}
-
-		if ((proxy != null)) {
-			try {
-				proxy.stop();
-			} catch (Exception e) {
-				LOG.error("tearDown() proxy stopping exception ", e);
-			}
-		}
-
-		String verificationErrorString = verificationErrors.toString();
-		if (!"".equals(verificationErrorString)) {
-			fail(verificationErrorString);
-		}
-	}
+        String verificationErrorString = verificationErrors.toString();
+        if (!"".equals(verificationErrorString)) {
+            fail(verificationErrorString);
+        }
+    }
 }
