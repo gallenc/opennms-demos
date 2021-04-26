@@ -3,7 +3,7 @@
 echo create docker image from opennms tarball. Run this script in the directory above opennms git repository
 
 branch=$(git -C ./opennms branch --show-current)
-name="${branch//'/'/"_"}"
+name="${branch//'/'/"-"}"
 echo creating docker image  $branch  in $name.oci
 
 cp -v opennms/target/*SNAPSHOT.tar.gz  opennms/opennms-container/horizon/tarball/
