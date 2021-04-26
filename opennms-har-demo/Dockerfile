@@ -4,7 +4,7 @@
 ##
 
 ARG BASE_IMAGE="opennms/horizon"
-ARG BASE_IMAGE_VERSION="jira_NMS-13190"
+ARG BASE_IMAGE_VERSION="jira-NMS-13190"
 
 FROM ${BASE_IMAGE}:${BASE_IMAGE_VERSION} as horizon-base
 
@@ -29,10 +29,3 @@ RUN curl --retry 5 --fail -L ${GECKODRIVER_URL} --create-dirs -o /opt/geckodrive
 
 ### Containers should NOT run as root as a good practice - use opennms user for runs
 USER 10001
-
-
-
-
-
-
-
