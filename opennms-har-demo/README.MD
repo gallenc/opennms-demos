@@ -6,6 +6,14 @@ I have not changed the OpenNMS opennms-container within this branch but have pro
 
 check out branch jira/NMS-13190 (https://github.com/OpenNMS/opennms/tree/jira/NMS-13190)
 
+If you want to use the latest build from jira/NMS-13190, you can pull the container image from DockerHub with
+
+```
+docker pull opennms/horizon:jira-NMS-13190
+```
+
+You can skip step 1 and 2.
+
 1. compile opennms
 
 In opennms folder, compile as normal using
@@ -19,7 +27,7 @@ This will build opennms and create a tarball of opennms in opennms/target.
 
 To simply build a docker image of this tarball, run the simple-horizon-image-build.sh script in the folder above (parent) of your checked out opennms. 
 
-This will create a docker image of opennms tagged opennms/horizon:jira_NMS-13190 which can be used for the next step.
+This will create a docker image of opennms tagged opennms/horizon:jira-NMS-13190 which can be used for the next step.
 
 3. create image with horizon  horizon, headless firefox and selenium driver
 

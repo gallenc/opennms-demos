@@ -11,7 +11,7 @@ volumes:
 
 services:
   database:
-    image: ${DOCKER_REGISTRY:-docker.io}/postgres:${POSTGRES_VERSION:-13}
+    image: postgres:13
     container_name: database
     hostname: database
     environment:
@@ -29,7 +29,7 @@ services:
       retries: 3
 
   cassandra-01:
-    image: ${DOCKER_REGISTRY:-docker.io}/cassandra:${CASSANDRA_VERSION:-3.11}
+    image: cassandra:3.11
     container_name: cassandra-01
     hostname: cassandra-01
     environment:
@@ -81,7 +81,7 @@ services:
       retries: 3
 
   grafana:
-    image: ${DOCKER_REGISTRY:-docker.io}/grafana/grafana:${GRAFANA_VERSION:-7.5.0}
+    image: grafana/grafana:7.5.0
     container_name: grafana
     hostname: grafana
     environment:
@@ -94,7 +94,7 @@ services:
       - "3000:3000/tcp"
       
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION:-6.8.13}
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.13
     container_name: es01
     hostname: es01
     environment:
@@ -113,7 +113,7 @@ services:
       retries: 5
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:${KIBANA_VERSION:-6.8.13}
+    image: docker.elastic.co/kibana/kibana:6.8.13
     container_name: kibana
     hostname: kibana
     depends_on: 
@@ -128,5 +128,3 @@ services:
       interval: 30s
       timeout: 10s
       retries: 50
-      
-
